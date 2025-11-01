@@ -1,0 +1,34 @@
+{
+  "lineart": {
+    "category": "lineart",
+    "title": "Lineart Samples",
+    "images": [
+      "/others/lineart/elf.webp",
+      "/others/lineart/ladymech.webp",
+      "/others/lineart/Lineart.webp",
+      "/others/lineart/Lineart2.webp",
+      "/others/lineart/LineartAxe.webp"
+    ]
+  },
+  "character_design": {
+    "category": "character_design",
+    "title": "Character Design Sheets",
+    "items": [
+      {
+        "title": "Danny",
+        "image": "/others/character_design_sheet/Danny.webp",
+        "description": "Complete character sheet with expressions and poses"
+      },
+      {
+        "title": "Lovely",
+        "image": "/others/character_design_sheet/Lovely.webp", 
+        "description": "Turnaround sheet and color palette"
+      },
+      {
+        "title": "Miguel",
+        "image": "/others/character_design_sheet/Miguel.webp",
+        "description": "Villain character design with multiple outfits"
+      }
+    ]
+  }
+}

@@ -20,7 +20,7 @@ const Profile = () => {
             <h3>Studio Affiliation</h3>
             <ul className="milestones">
               <li>
-                  <a href="https://example.com" target="_blank" rel="noopener noreferrer" className="studio-link">
+                  <a href="https://web.facebook.com/nosleeparewestartup" target="_blank" rel="noopener noreferrer" className="studio-link">
                       <strong>NOSLEEPAREWE Studio</strong>
                   </a>
               </li>

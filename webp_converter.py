@@ -113,4 +113,4 @@ def quick_convert(input_dir, output_dir=None, quality=75, resize=None):
 
 if __name__ == "__main__":
     # Example usage
-    quick_convert('./artkat/public/personal', './artkat/public/personal_webp', quality=75)
+    quick_convert('./artkat/public/others/character_design_sheet', './artkat/converted', quality=75)

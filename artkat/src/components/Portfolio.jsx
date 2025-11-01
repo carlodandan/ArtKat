@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import webtoonData from '../data/webtoon.json';
 import personalData from '../data/personal.json';
+import othersData from '../data/others.json';
 import ProtectedImage from './ProtectedImage';
 
 const Portfolio = () => {
@@ -8,6 +9,7 @@ const Portfolio = () => {
   const [displayedItems, setDisplayedItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [showDetail, setShowDetail] = useState(false);
+  const [activeOthersTab, setActiveOthersTab] = useState('lineart'); // New state for others tabs
 
   const allItems = [
     ...personalData,
@@ -29,6 +31,8 @@ const Portfolio = () => {
   const filterItems = (filter) => {
     if (filter === 'all') {
       setDisplayedItems(allItems);
+    } else if (filter === 'others') {
+      setDisplayedItems([]);
     } else {
       setDisplayedItems(allItems.filter(item => item.category === filter));
     }
@@ -40,6 +44,8 @@ const Portfolio = () => {
         return 'List of personal art illustrations.';
       case 'webtoon':
         return 'List of webtoon titles where I contributed as an assistant artist (flats and/or lineart)';
+      case 'others':
+        return 'Collection of linearts and character design sheets';
       default:
         return null;
     }
@@ -48,13 +54,23 @@ const Portfolio = () => {
   const handleItemClick = (item) => {
     setSelectedItem(item);
     setShowDetail(true);
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
+  };
+
+  const handleLineartClick = (imageSrc) => {
+    setSelectedItem({
+      title: "Lineart Sample",
+      image: imageSrc,
+      category: 'lineart'
+    });
+    setShowDetail(true);
+    document.body.style.overflow = 'hidden';
   };
 
   const closeDetail = () => {
     setShowDetail(false);
     setSelectedItem(null);
-    document.body.style.overflow = 'auto'; // Re-enable scrolling
+    document.body.style.overflow = 'auto';
   };
 
   const renderPortfolioItem = (item) => {
@@ -109,8 +125,78 @@ const Portfolio = () => {
     );
   };
 
+  const renderOthersTabs = () => {
+    if (activeFilter !== 'others') return null;
+
+    return (
+      <div className="others-container">
+        {/* Tab Navigation */}
+        <div className="others-tabs">
+          <button 
+            className={`others-tab ${activeOthersTab === 'lineart' ? 'active' : ''}`}
+            onClick={() => setActiveOthersTab('lineart')}
+          >
+            Lineart Samples
+          </button>
+          <button 
+            className={`others-tab ${activeOthersTab === 'character_design' ? 'active' : ''}`}
+            onClick={() => setActiveOthersTab('character_design')}
+          >
+            Character Design Sheets
+          </button>
+        </div>
+
+        {/* Tab Content */}
+        <div className="others-tab-content">
+          {activeOthersTab === 'lineart' && (
+            <div className="lineart-grid">
+              {othersData.lineart.images.map((image, index) => (
+                <div 
+                  key={index} 
+                  className="lineart-item"
+                  onClick={() => handleLineartClick(image)}
+                >
+                  <ProtectedImage 
+                    src={image} 
+                    alt={`Lineart Sample ${index + 1}`}
+                    className="lineart-image" 
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+
+          {activeOthersTab === 'character_design' && (
+            <div className="character-design-grid">
+              {othersData.character_design.items.map((item, index) => (
+                <div 
+                  key={index} 
+                  className="portfolio-item character-design"
+                  onClick={() => handleItemClick({...item, category: 'character_design'})}
+                >
+                  <ProtectedImage 
+                    src={item.image} 
+                    alt={item.title} 
+                    className="portfolio-item__img" 
+                  />
+                  <div className="portfolio-item__info">
+                    <h4>{item.title}</h4>
+                    <p className="portfolio-description">{trimDescription(item.description)}</p>
+                    <span className="portfolio-item__category">character design</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
+
   const renderDetailCard = () => {
     if (!selectedItem) return null;
+
+    const isLineart = selectedItem.category === 'lineart';
 
     return (
       <div className="detail-overlay" onClick={closeDetail}>
@@ -119,46 +205,51 @@ const Portfolio = () => {
             ×
           </button>
           
-          <div className="detail-content">
+          <div className={`detail-content ${isLineart ? 'lineart-detail' : ''}`}>
             <div className="detail-image">
               <img 
                 src={selectedItem.poster || selectedItem.image} 
                 alt={selectedItem.title} 
-                className={selectedItem.category === 'webtoon' ? 'webtoon-detail-image' : ''}
+                className={isLineart ? 'lineart-full-image' : (selectedItem.category === 'webtoon' ? 'webtoon-detail-image' : '')}
               />
             </div>
             
-            <div className="detail-info">
-              <h2 className="detail-title">{selectedItem.title}</h2>
-              <div className="detail-description-container">
-                <p className="detail-description">{selectedItem.description}</p>
-              </div>
-              
-              <div className="detail-meta">
-                <span className={`detail-category ${selectedItem.category}`}>
-                  {selectedItem.category}
-                </span>
+            {!isLineart && (
+              <div className="detail-info">
+                <h2 className="detail-title">{selectedItem.title}</h2>
                 
-                {selectedItem.platform && (
-                  <span className={`platform-badge ${selectedItem.platform === 'originals' ? 'platform-originals' : 'platform-canvas'}`}>
-                    {selectedItem.platform === 'originals' ? 'Originals' : 'Canvas'}
+                {selectedItem.description && (
+                  <div className="detail-description-container">
+                    <p className="detail-description">{selectedItem.description}</p>
+                  </div>
+                )}
+                
+                <div className="detail-meta">
+                  <span className={`detail-category ${selectedItem.category}`}>
+                    {selectedItem.category}
                   </span>
+                  
+                  {selectedItem.platform && (
+                    <span className={`platform-badge ${selectedItem.platform === 'originals' ? 'platform-originals' : 'platform-canvas'}`}>
+                      {selectedItem.platform === 'originals' ? 'Originals' : 'Canvas'}
+                    </span>
+                  )}
+                </div>
+                
+                {selectedItem.category === 'webtoon' && selectedItem.url && (
+                  <div className="detail-actions">
+                    <a 
+                      href={selectedItem.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="btn btn--primary"
+                    >
+                      Read on WEBTOON
+                    </a>
+                  </div>
                 )}
               </div>
-              
-              {selectedItem.category === 'webtoon' && selectedItem.url && (
-                <div className="detail-actions">
-                  <a 
-                    href={selectedItem.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="btn btn--primary"
-                  >
-                    Read on WEBTOON
-                  </a>
-                </div>
-              )}
-            </div>
+            )}
           </div>
         </div>
       </div>
@@ -192,15 +283,23 @@ const Portfolio = () => {
           >
             Webtoon
           </button>
+          <button 
+            className={`filter-btn ${activeFilter === 'others' ? 'active' : ''}`}
+            onClick={() => setActiveFilter('others')}
+            data-filter="others"
+          >
+            Others
+          </button>
         </div>
         
         <div className="portfolio__grid">
-          {activeFilter !== 'all' && (
+          {activeFilter !== 'all' && activeFilter !== 'others' && (
             <div className="category-header">
               <em>{getCategoryHeader()}</em>
             </div>
           )}
-          {displayedItems.map(renderPortfolioItem)}
+          {activeFilter !== 'others' && displayedItems.map(renderPortfolioItem)}
+          {renderOthersTabs()}
         </div>
       </div>
 
