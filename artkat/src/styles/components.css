@@ -20,7 +20,7 @@
     color: var(--color-accent-light);
     border-color: var(--color-accent-light);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(124, 77, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(77, 255, 92, 0.3);
 }
 
 /* === Header & Navigation === */
@@ -38,7 +38,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
 }
 
 .nav__logo {
@@ -47,6 +47,10 @@
     font-weight: 700;
     text-decoration: none;
     color: var(--color-black);
+}
+
+.nav__logo span {
+    color: #00dc64;
 }
 
 .nav__list {
@@ -238,7 +242,7 @@
     background-color: var(--color-accent);
     color: var(--color-black);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(124, 77, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(98, 255, 77, 0.3);
 }
 
 /* === Footer === */

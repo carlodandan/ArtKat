@@ -12,7 +12,7 @@ const Header = () => {
     <header className="header">
       <nav className="nav container">
         <a href="#home" className="nav__logo" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}>
-          ArtKat
+          Art<span>Kat</span>
         </a>
         <ul className="nav__list">
           <li><a href="#home" className="nav__link" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}>Home</a></li>

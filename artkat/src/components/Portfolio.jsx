@@ -60,7 +60,7 @@ const Portfolio = () => {
   const renderPortfolioItem = (item) => {
     if (item.category === 'webtoon') {
       const platformClass = item.platform === 'originals' ? 'platform-originals' : 'platform-canvas';
-      const platformText = item.platform === 'originals' ? 'WEBTOON Originals' : 'WEBTOON Canvas';
+      const platformText = item.platform === 'originals' ? 'Originals' : 'Canvas';
       
       return (
         <div 
@@ -141,7 +141,7 @@ const Portfolio = () => {
                 
                 {selectedItem.platform && (
                   <span className={`platform-badge ${selectedItem.platform === 'originals' ? 'platform-originals' : 'platform-canvas'}`}>
-                    {selectedItem.platform === 'originals' ? 'WEBTOON Originals' : 'WEBTOON Canvas'}
+                    {selectedItem.platform === 'originals' ? 'Originals' : 'Canvas'}
                   </span>
                 )}
               </div>

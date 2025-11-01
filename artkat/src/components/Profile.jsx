@@ -19,7 +19,11 @@ const Profile = () => {
           <div className="profile__timeline">
             <h3>Studio Affiliation</h3>
             <ul className="milestones">
-              <li><strong>NOSLEEPAREWE Studio</strong></li>
+              <li>
+                  <a href="https://example.com" target="_blank" rel="noopener noreferrer" className="studio-link">
+                      <strong>NOSLEEPAREWE Studio</strong>
+                  </a>
+              </li>
             </ul>
             <h3>Notable Milestones</h3>
             <ul className="milestones">
@@ -45,9 +49,9 @@ const Profile = () => {
             </div>
             <ul className="skills__list">
               <li>Character Designs</li>
-              <li>Character Illustrations</li>
-              <li>Webtoon Creation</li>
-              <li>Webtoon Lineart/Color Assists</li>
+              <li>Concept Illustrations</li>
+              <li>Book Illustrations</li>
+              <li>Webcomic Assistance</li>
             </ul>
           </div>
         </div>

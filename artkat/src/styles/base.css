@@ -5,9 +5,9 @@
     --color-dark-gray: #1E1E1E;
     --color-mid-gray: #B0B0B0;
     --color-light-gray: #2D2D2D;
-    --color-accent: #7C4DFF;
-    --color-accent-light: #9A76FF;
-    --color-accent-dark: #5E35B1;
+    --color-accent: #00dc64;
+    --color-accent-light: #7bff76;
+    --color-accent-dark: #4ab135;
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Inter', sans-serif;
 }
@@ -20,7 +20,39 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-timeline: --scroll-timeline;
 }
+
+/* Custom scroll behavior with ease-in */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Custom easing for smooth scroll */
+    * {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Optional: Custom scrollbar styling for better visual experience */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-dark-gray);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent-light);
+}
+
 
 body {
     font-family: var(--font-sans);
