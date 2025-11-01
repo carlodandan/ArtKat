@@ -32,12 +32,19 @@ def convert_image(input_path, output_path, quality=80):
         return False
 
 def find_images(directory, extensions=('.png', '.jpg', '.jpeg', '.bmp', '.tiff')):
-    """Recursively find all image files in directory"""
+    """Find all image files in the root directory only (no subdirectories)"""
     image_files = []
-    for root, _, files in os.walk(directory):
+    try:
+        # Only look in the root directory, not subdirectories
+        files = os.listdir(directory)
         for file in files:
-            if file.lower().endswith(extensions):
-                image_files.append(os.path.join(root, file))
+            file_path = os.path.join(directory, file)
+            # Check if it's a file (not directory) and has valid image extension
+            if os.path.isfile(file_path) and file.lower().endswith(extensions):
+                image_files.append(file_path)
+    except Exception as e:
+        print(f"Error reading directory {directory}: {str(e)}")
+    
     return image_files
 
 def main():
@@ -65,11 +72,11 @@ def main():
     print(f"Parallel jobs: {args.jobs}")
     print("-" * 50)
     
-    # Find all images
+    # Find all images in root directory only
     image_files = find_images(args.input_dir)
     
     if not image_files:
-        print("No images found in the input directory")
+        print("No images found in the input directory root")
         sys.exit(1)
     
     print(f"Found {len(image_files)} images to convert")
@@ -77,10 +84,10 @@ def main():
     # Prepare conversion tasks
     conversion_tasks = []
     for input_path in image_files:
-        # Get relative path from input directory
-        rel_path = os.path.relpath(input_path, args.input_dir)
+        # Get just the filename (not relative path since we're in root)
+        filename = os.path.basename(input_path)
         # Change extension to .webp
-        name_without_ext = os.path.splitext(rel_path)[0]
+        name_without_ext = os.path.splitext(filename)[0]
         output_path = os.path.join(args.output, name_without_ext + '.webp')
         conversion_tasks.append((input_path, output_path))
     
