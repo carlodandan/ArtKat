@@ -31,14 +31,20 @@ const Portfolio = () => {
 
   // Memoize filterItems function
   const filterItems = useCallback((filter) => {
-    if (filter === 'all') {
-      setDisplayedItems(allItems);
-    } else if (filter === 'others') {
-      setDisplayedItems([]);
-    } else {
-      setDisplayedItems(allItems.filter(item => item.category === filter));
-    }
-  }, [allItems]);
+  if (filter === 'all') {
+    setDisplayedItems(allItems);
+  } else if (filter === 'others') {
+    setDisplayedItems([]);
+  } else if (filter === 'personal') {
+    // For personal filter, check if category includes 'personal'
+    setDisplayedItems(allItems.filter(item => 
+      item.category.includes('personal')
+    ));
+  } else {
+    // For other filters (like webtoon), use exact match
+    setDisplayedItems(allItems.filter(item => item.category === filter));
+  }
+}, [allItems]);
 
   // Memoize category header
   const categoryHeader = useMemo(() => {
