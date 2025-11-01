@@ -1,0 +1,423 @@
+/* === Hero Section === */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-dark-gray);
+}
+
+.hero__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(3px) brightness(0.4);
+    transform: scale(1.1);
+    z-index: 1;
+    transition: filter 0.3s ease;
+}
+
+.hero__overlay {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero__content {
+    color: var(--color-black);
+    text-align: center;
+}
+
+.hero__title {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: var(--color-black);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.hero__tagline {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--color-mid-gray);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Hero button overrides */
+.hero .btn--primary {
+    background-color: var(--color-accent);
+    color: var(--color-black);
+    border: 2px solid var(--color-accent);
+    font-weight: 600;
+}
+
+.hero .btn--primary:hover {
+    background-color: transparent;
+    color: var(--color-accent-light);
+    border: 2px solid var(--color-accent-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(124, 77, 255, 0.3);
+}
+
+/* === Profile Section === */
+.profile__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.profile__bio h3,
+.profile__timeline h3,
+.profile__skills h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--color-black);
+}
+
+.profile__timeline li {
+    margin-bottom: 0.5rem;
+    border-left: 2px solid var(--color-light-gray);
+    padding-left: 1rem;
+}
+
+.skills__list {
+    padding-left: 30px;
+}
+
+.skills__list li {
+    border-left: 2px solid var(--color-light-gray);
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.milestones {
+    padding-left: 30px;
+}
+
+/* === Portfolio Section === */
+/* (Portfolio grid and filters are in components.css) */
+
+/* === Webtoon Specific Styles === */
+.webtoon-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.webtoon-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    color: var(--color-mid-gray);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.webtoon-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.platform-badge {
+    padding: 0.6rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.platform-originals {
+    background-color: var(--color-accent);
+    color: var(--color-black);
+}
+
+.platform-canvas {
+    background-color: var(--color-light-gray);
+    color: var(--color-mid-gray);
+    border: 1px solid var(--color-mid-gray);
+}
+
+.portfolio-item__category {
+    font-size: 0.75rem;
+    color: var(--color-mid-gray);
+    text-transform: capitalize;
+}
+
+/* === Category Headers === */
+.category-header {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--color-light-gray);
+}
+
+.category-header em {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--color-mid-gray);
+    font-weight: 400;
+}
+
+/* === Detail Card Content === */
+.detail-image {
+    background: var(--color-light-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.detail-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.detail-image img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.detail-info {
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.detail-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-black);
+}
+
+.detail-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-mid-gray);
+    margin-bottom: 2rem;
+}
+
+.detail-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.detail-category {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.detail-category.personal {
+    background: rgba(25, 118, 210, 0.2);
+    color: #64B5F6;
+    border: 1px solid #64B5F6;
+}
+
+.detail-category.commissioned {
+    background: rgba(123, 31, 162, 0.2);
+    color: #BA68C8;
+    border: 1px solid #BA68C8;
+}
+
+.detail-category.webtoon {
+    background: rgba(56, 142, 60, 0.2);
+    color: #81C784;
+    border: 1px solid #81C784;
+}
+
+.detail-actions {
+    margin-top: auto;
+}
+
+/* === Scrollable Description in Detail Card === */
+.detail-description-container {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 2rem;
+    max-height: 300px;
+}
+
+.detail-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-mid-gray);
+    white-space: pre-line;
+    margin: 0;
+}
+
+/* Scrollbar styling */
+.detail-description-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.detail-description-container::-webkit-scrollbar-track {
+    background: var(--color-light-gray);
+    border-radius: 3px;
+}
+
+.detail-description-container::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 3px;
+}
+
+.detail-description-container::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent-light);
+}
+
+/* === Webtoon Thumbnail Styles === */
+.webtoon-thumbnail {
+    object-fit: contain !important;
+    background-color: var(--color-light-gray);
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.webtoon-detail-image {
+    object-fit: contain;
+    max-height: 70vh;
+    width: auto;
+    max-width: 100%;
+}
+
+/* === Image Protection === */
+.protected-image {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.portfolio-item__img {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Disable image dragging */
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+
+/* === Responsive Sections === */
+@media (max-width: 768px) {
+    .hero__title {
+        font-size: 2.5rem;
+    }
+    
+    .hero__tagline {
+        font-size: 1.2rem;
+    }
+    
+    .hero__background {
+        filter: blur(4px) brightness(0.4);
+        transform: scale(1.05);
+    }
+    
+    .detail-image {
+        padding: 1rem;
+        max-height: 40vh;
+    }
+    
+    .detail-image img {
+        max-height: 35vh;
+    }
+    
+    .detail-info {
+        padding: 2rem 1.5rem;
+    }
+    
+    .detail-title {
+        font-size: 1.5rem;
+    }
+    
+    .detail-description {
+        font-size: 1rem;
+    }
+    
+    .detail-description-container {
+        max-height: 200px;
+    }
+    
+    .webtoon-detail-image {
+        max-height: 40vh;
+    }
+}
+
+/* === Portfolio Description Line Clamping === */
+.portfolio-description,
+.webtoon-description,
+.personal-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    color: var(--color-mid-gray);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    min-height: 4.2em;
+}
+
+/* Fallback for browsers without line-clamp support */
+.portfolio-item__info p {
+    max-height: 4.2em;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Optional: Add fade effect for browsers without line-clamp support */
+.portfolio-item__info p::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    height: 1.4em;
+    background: linear-gradient(90deg, transparent, var(--color-light-gray) 50%);
+}
+
+/* Remove the fade when hovering */
+.portfolio-item:hover .portfolio-item__info p::after {
+    background: transparent;
+}
