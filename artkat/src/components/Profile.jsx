@@ -2,7 +2,7 @@ import React from 'react';
 
 const Profile = () => {
   return (
-    <section id="profile" className="profile section scroll-fade-in">
+    <section id="profile" className="profile section">
       <div className="container">
         <h2 className="section__title">Artist Profile</h2>
         
