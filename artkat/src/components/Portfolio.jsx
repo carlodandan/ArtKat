@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import webtoonData from '../data/webtoon.json';
 import personalData from '../data/personal.json';
 import othersData from '../data/others.json';
@@ -11,13 +11,14 @@ const Portfolio = () => {
   const [showDetail, setShowDetail] = useState(false);
   const [activeOthersTab, setActiveOthersTab] = useState('lineart'); // New state for others tabs
 
-  const allItems = [
+  // Memoize allItems to prevent recalculation on every render
+  const allItems = useMemo(() => [
     ...personalData,
     ...webtoonData.map(webtoon => ({
       ...webtoon,
       category: 'webtoon'
     }))
-  ];
+  ], []);
 
   // Function to trim description to 3 lines
   const trimDescription = (description, maxLines = 3) => {
@@ -28,7 +29,8 @@ const Portfolio = () => {
     filterItems(activeFilter);
   }, [activeFilter]);
 
-  const filterItems = (filter) => {
+  // Memoize filterItems function
+  const filterItems = useCallback((filter) => {
     if (filter === 'all') {
       setDisplayedItems(allItems);
     } else if (filter === 'others') {
@@ -36,9 +38,10 @@ const Portfolio = () => {
     } else {
       setDisplayedItems(allItems.filter(item => item.category === filter));
     }
-  };
+  }, [allItems]);
 
-  const getCategoryHeader = () => {
+  // Memoize category header
+  const categoryHeader = useMemo(() => {
     switch(activeFilter) {
       case 'personal':
         return 'List of personal art illustrations.';
@@ -49,15 +52,15 @@ const Portfolio = () => {
       default:
         return null;
     }
-  };
+  }, [activeFilter]);
 
-  const handleItemClick = (item) => {
+  const handleItemClick = useCallback((item) => {
     setSelectedItem(item);
     setShowDetail(true);
     document.body.style.overflow = 'hidden';
-  };
+  }, []);
 
-  const handleLineartClick = (imageSrc) => {
+  const handleLineartClick = useCallback((imageSrc) => {
     setSelectedItem({
       title: "Lineart Sample",
       image: imageSrc,
@@ -65,15 +68,16 @@ const Portfolio = () => {
     });
     setShowDetail(true);
     document.body.style.overflow = 'hidden';
-  };
+  }, []);
 
-  const closeDetail = () => {
+  const closeDetail = useCallback(() => {
     setShowDetail(false);
     setSelectedItem(null);
     document.body.style.overflow = 'auto';
-  };
+  }, []);
 
-  const renderPortfolioItem = (item) => {
+  // Memoize portfolio item renderer
+  const renderPortfolioItem = useCallback((item) => {
     if (item.category === 'webtoon') {
       const platformClass = item.platform === 'originals' ? 'platform-originals' : 'platform-canvas';
       const platformText = item.platform === 'originals' ? 'Originals' : 'Canvas';
@@ -123,9 +127,10 @@ const Portfolio = () => {
         </div>
       </div>
     );
-  };
+  }, [handleItemClick]);
 
-  const renderOthersTabs = () => {
+  // Memoize others tabs renderer
+  const renderOthersTabs = useMemo(() => {
     if (activeFilter !== 'others') return null;
 
     return (
@@ -187,9 +192,10 @@ const Portfolio = () => {
         </div>
       </div>
     );
-  };
+  }, [activeFilter, activeOthersTab, handleItemClick, handleLineartClick]);
 
-  const renderDetailCard = () => {
+  // Memoize detail card renderer
+  const renderDetailCard = useMemo(() => {
     if (!selectedItem) return null;
 
     const isLineart = selectedItem.category === 'lineart';
@@ -252,7 +258,22 @@ const Portfolio = () => {
         </div>
       </div>
     );
-  };
+  }, [selectedItem, closeDetail]);
+
+  // Memoize portfolio grid content
+  const portfolioGridContent = useMemo(() => {
+    return (
+      <div className="portfolio__grid">
+        {activeFilter !== 'all' && activeFilter !== 'others' && (
+          <div className="category-header">
+            <em>{categoryHeader}</em>
+          </div>
+        )}
+        {activeFilter !== 'others' && displayedItems.map(renderPortfolioItem)}
+        {renderOthersTabs}
+      </div>
+    );
+  }, [activeFilter, categoryHeader, displayedItems, renderPortfolioItem, renderOthersTabs]);
 
   return (
     <section id="portfolio" className="portfolio section">
@@ -290,18 +311,10 @@ const Portfolio = () => {
           </button>
         </div>
         
-        <div className="portfolio__grid">
-          {activeFilter !== 'all' && activeFilter !== 'others' && (
-            <div className="category-header">
-              <em>{getCategoryHeader()}</em>
-            </div>
-          )}
-          {activeFilter !== 'others' && displayedItems.map(renderPortfolioItem)}
-          {renderOthersTabs()}
-        </div>
+        {portfolioGridContent}
       </div>
 
-      {showDetail && renderDetailCard()}
+      {showDetail && renderDetailCard}
     </section>
   );
 };
