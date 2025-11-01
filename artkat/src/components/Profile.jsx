@@ -38,7 +38,7 @@ const Profile = () => {
             <div className="skills__grid">
               <div className="skill-item">
                 <img 
-                  src="/csp.png" 
+                  src="/csp.webp" 
                   alt="Clip Studio Paint" 
                   className="skill-icon skill-icon-circle"
                   width="24" 
