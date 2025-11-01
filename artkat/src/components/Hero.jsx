@@ -18,7 +18,7 @@ const Hero = () => {
       ></div>
       <div className="hero__overlay">
         <div className="hero__content container">
-          <h1 className="hero__title">ArtKat (keyti_sar)</h1>
+          <h1 className="hero__title">ArtKat</h1>
           <p className="hero__tagline">Digital Artist & Illustrator</p>
           <button className="btn btn--primary" onClick={scrollToPortfolio}>
             View My Work
