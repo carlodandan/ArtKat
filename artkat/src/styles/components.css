@@ -253,6 +253,29 @@
     height: 100%;
 }
 
+/* Character Design Detail View - Larger image, smaller info */
+.detail-content:has(.detail-category.character_design) {
+    grid-template-columns: 2fr 1fr !important;
+}
+
+.detail-content:has(.detail-category.character_design) .detail-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail-content:has(.detail-category.character_design) .detail-image img {
+    max-width: 100%;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.detail-content:has(.detail-category.character_design) .detail-info {
+    padding: 1.5rem;
+}
+
 /* === Footer === */
 .footer {
     background-color: var(--color-dark-gray);
