@@ -1,10 +1,32 @@
 /* === CSS Reset & Variables === */
+/* === Dark Theme CSS Variables === */
 :root {
-    --color-white: #FFFFFF;
+    /* Dark color palette */
+    --color-bg-dark: #1a1a1a;
+    --color-bg-darker: #121212;
+    --color-bg-card: #2d2d2d;
+    --color-bg-card-hover: #383838;
+    
+    /* Text colors */
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #e0e0e0;
+    --color-text-muted: #b0b0b0;
+    --color-text-accent: #f5f5f5;
+    
+    /* Border and accent colors */
+    --color-border: #404040;
+    --color-border-light: #4a4a4a;
+    --color-accent: #646cff;
+    --color-accent-hover: #747bff;
+    
+    /* Original colors (keep for reference) */
+    --color-white: #ffffff;
     --color-black: #000000;
     --color-dark-gray: #111111;
     --color-mid-gray: #333333;
-    --color-light-gray: #EEEEEE;
+    --color-light-gray: #404040;
+    
+    /* Fonts */
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Inter', sans-serif;
 }
