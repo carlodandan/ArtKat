@@ -108,11 +108,14 @@ const Portfolio = () => {
       );
     }
 
+    // Split categories by comma for personal items with multiple tags
+    const categories = item.category.split(',').map(cat => cat.trim());
+
     return (
       <div 
         key={item.title} 
-        className={`portfolio-item ${item.category}`} 
-        data-category={item.category}
+        className={`portfolio-item ${categories[0]}`} 
+        data-category={categories[0]}
         onClick={() => handleItemClick(item)}
       >
         <ProtectedImage 
@@ -123,7 +126,9 @@ const Portfolio = () => {
         <div className="portfolio-item__info">
           <h4>{item.title}</h4>
           <p className="portfolio-description">{trimDescription(item.description)}</p>
-          <span className="portfolio-item__category">{item.category}</span>
+          <span className="portfolio-item__category">
+            {categories.join(', ')}
+          </span>
         </div>
       </div>
     );
@@ -229,9 +234,15 @@ const Portfolio = () => {
                 )}
                 
                 <div className="detail-meta">
-                  <span className={`detail-category ${selectedItem.category}`}>
-                    {selectedItem.category}
-                  </span>
+                  {/* Split categories by comma and render all */}
+                  {selectedItem.category.split(',').map((cat, index) => {
+                    const trimmedCat = cat.trim();
+                    return (
+                      <span key={index} className={`detail-category ${trimmedCat}`}>
+                        {trimmedCat}
+                      </span>
+                    );
+                  })}
                   
                   {selectedItem.platform && (
                     <span className={`platform-badge ${selectedItem.platform === 'originals' ? 'platform-originals' : 'platform-canvas'}`}>
@@ -254,8 +265,8 @@ const Portfolio = () => {
                   </div>
                 )}
                 
-                {/* NEW: Webtoon button for personal items that have URL */}
-                {selectedItem.category === 'personal' && selectedItem.url && (
+                {/* Webtoon button for personal items that have URL */}
+                {selectedItem.category.includes('personal') && selectedItem.url && (
                   <div className="detail-actions">
                     <a 
                       href={selectedItem.url} 

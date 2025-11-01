@@ -89,7 +89,7 @@
 }
 
 .profile__timeline li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 2rem;
     border-left: 2px solid var(--color-light-gray);
     padding-left: 1rem;
 }
@@ -237,10 +237,10 @@
     border: 1px solid #9af664;
 }
 
-.detail-category.commissioned {
-    background: rgba(46, 162, 31, 0.2);
-    color: #78c868;
-    border: 1px solid #386e2b;
+.detail-category.fanart {
+    background: rgba(31, 210, 25, 0.2);
+    color: #69f664;
+    border: 1px solid #9af664;
 }
 
 .detail-category.webtoon {
