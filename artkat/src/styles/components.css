@@ -75,7 +75,7 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 
 .filter-btn {
@@ -118,6 +118,13 @@
 .portfolio-item img {
     width: 100%;
     object-fit: cover;
+    padding: 0%;
+}
+
+.portfolio-item.personal img {
+    height: 300px;
+    object-fit: cover;
+    object-position: center top;
 }
 
 .portfolio-item__info {

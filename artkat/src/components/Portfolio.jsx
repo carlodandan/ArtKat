@@ -43,7 +43,7 @@ const Portfolio = () => {
       case 'personal':
         return 'List of personal art illustrations.';
       case 'webtoon':
-        return 'List of webtoon titles where I contributed as an assistant artist (flats and/or lineart)';
+        return 'List of webtoon titles where I contributed as an assistant artist.';
       case 'others':
         return 'Collection of linearts and character design sheets';
       default:
