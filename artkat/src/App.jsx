@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Profile from './components/Profile';
-import Portfolio from './components/Portfolio';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
+
+// Lazy load the main content components
+const Profile = React.lazy(() => import('./components/Profile'));
+const Portfolio = React.lazy(() => import('./components/Portfolio'));
+const Contact = React.lazy(() => import('./components/Contact'));
+
+// Loading fallback component
+const LoadingFallback = () => (
+  <div className="loading-section">
+    <div className="loading-spinner"></div>
+    <p>Loading...</p>
+  </div>
+);
 
 function App() {
   return (
@@ -12,9 +22,15 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <Profile />
-        <Portfolio />
-        <Contact />
+        <Suspense fallback={<LoadingFallback />}>
+          <Profile />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <Portfolio />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <Contact />
+        </Suspense>
       </main>
       <Footer />
     </div>
