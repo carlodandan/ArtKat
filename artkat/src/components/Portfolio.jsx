@@ -179,11 +179,7 @@ const Portfolio = () => {
                     alt={item.title} 
                     className="portfolio-item__img" 
                   />
-                  <div className="portfolio-item__info">
-                    <h4>{item.title}</h4>
-                    <p className="portfolio-description">{trimDescription(item.description)}</p>
-                    <span className="portfolio-item__category">character design</span>
-                  </div>
+                  {/* Removed title, description, and category tags */}
                 </div>
               ))}
             </div>
@@ -197,6 +193,7 @@ const Portfolio = () => {
     if (!selectedItem) return null;
 
     const isLineart = selectedItem.category === 'lineart';
+    const isCharacterDesign = selectedItem.category === 'character_design';
 
     return (
       <div className="detail-overlay" onClick={closeDetail}>
@@ -205,16 +202,17 @@ const Portfolio = () => {
             ×
           </button>
           
-          <div className={`detail-content ${isLineart ? 'lineart-detail' : ''}`}>
+          <div className={`detail-content ${isLineart || isCharacterDesign ? 'lineart-detail' : ''}`}>
             <div className="detail-image">
               <img 
                 src={selectedItem.poster || selectedItem.image} 
                 alt={selectedItem.title} 
-                className={isLineart ? 'lineart-full-image' : (selectedItem.category === 'webtoon' ? 'webtoon-detail-image' : '')}
+                className={isLineart || isCharacterDesign ? 'lineart-full-image' : (selectedItem.category === 'webtoon' ? 'webtoon-detail-image' : '')}
               />
             </div>
             
-            {!isLineart && (
+            {/* Hide info panel for lineart AND character design */}
+            {!isLineart && !isCharacterDesign && (
               <div className="detail-info">
                 <h2 className="detail-title">{selectedItem.title}</h2>
                 

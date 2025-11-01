@@ -121,6 +121,21 @@
     padding: 0%;
 }
 
+.portfolio-item.character-design {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.portfolio-item.character-design img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Changed from 'contain' to 'cover' to eliminate black space */
+    object-position: center center; /* Ensure it's centered */
+    transform: scale(1.05); /* Slight zoom to eliminate edges */
+}
+
 .portfolio-item.personal img {
     height: 300px;
     object-fit: cover;

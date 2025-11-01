@@ -347,7 +347,6 @@ img {
     }
     
     .detail-image {
-        padding: 1rem;
         max-height: 40vh;
     }
     
@@ -503,10 +502,6 @@ img {
         max-width: 100%;
         margin-left: 0;
         margin-right: 0;
-    }
-    
-    .lineart-image {
-        padding: 1rem;
     }
 }
 
