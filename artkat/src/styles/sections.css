@@ -488,15 +488,6 @@ img {
     border-color: var(--color-accent);
 }
 
-/* Character Design Items */
-.portfolio-item.character-design {
-    border-color: #00dc64;
-}
-
-.portfolio-item.character-design:hover {
-    border-color: #00dc64;
-}
-
 /* Detail Category Styles for Others */
 .detail-category.lineart,
 .detail-category.character_design {
@@ -546,7 +537,12 @@ img {
     font-weight: 500;
 }
 
-.others-tab.active,
+.others-tab.active {
+    background-color: #005025;
+    color: var(--color-black);
+    border-color: var(--color-accent);
+}
+
 .others-tab:hover {
     background-color: var(--color-accent);
     color: var(--color-black);
@@ -577,8 +573,9 @@ img {
     gap: 2rem;
 }
 
+/* Character Design Items */
 .portfolio-item.character-design {
-    border-color: ##00dc64;
+    border-color: #3A3A3A;
 }
 
 .portfolio-item.character-design:hover {
