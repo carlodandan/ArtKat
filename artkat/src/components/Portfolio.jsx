@@ -9,7 +9,7 @@ const Portfolio = () => {
   const [displayedItems, setDisplayedItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [showDetail, setShowDetail] = useState(false);
-  const [activeOthersTab, setActiveOthersTab] = useState('lineart');
+  const [activeOthersTab, setActiveOthersTab] = useState('lineart'); // New state for others tabs
 
   const allItems = [
     ...personalData,
@@ -19,6 +19,7 @@ const Portfolio = () => {
     }))
   ];
 
+  // Function to trim description to 3 lines
   const trimDescription = (description, maxLines = 3) => {
     return description;
   };
@@ -129,6 +130,7 @@ const Portfolio = () => {
 
     return (
       <div className="others-container">
+        {/* Tab Navigation */}
         <div className="others-tabs">
           <button 
             className={`others-tab ${activeOthersTab === 'lineart' ? 'active' : ''}`}
@@ -144,6 +146,7 @@ const Portfolio = () => {
           </button>
         </div>
 
+        {/* Tab Content */}
         <div className="others-tab-content">
           {activeOthersTab === 'lineart' && (
             <div className="lineart-grid">
@@ -177,7 +180,9 @@ const Portfolio = () => {
                     className="portfolio-item__img" 
                   />
                   <div className="portfolio-item__info">
-                    {/* Title, description and category tag removed */}
+                    <h4>{item.title}</h4>
+                    <p className="portfolio-description">{trimDescription(item.description)}</p>
+                    <span className="portfolio-item__category">character design</span>
                   </div>
                 </div>
               ))}
@@ -192,7 +197,6 @@ const Portfolio = () => {
     if (!selectedItem) return null;
 
     const isLineart = selectedItem.category === 'lineart';
-    const isCharacterDesign = selectedItem.category === 'character_design';
 
     return (
       <div className="detail-overlay" onClick={closeDetail}>
@@ -201,17 +205,16 @@ const Portfolio = () => {
             ×
           </button>
           
-          <div className={`detail-content ${isLineart || isCharacterDesign ? 'lineart-detail' : ''}`}>
+          <div className={`detail-content ${isLineart ? 'lineart-detail' : ''}`}>
             <div className="detail-image">
               <img 
                 src={selectedItem.poster || selectedItem.image} 
                 alt={selectedItem.title} 
-                className={isLineart || isCharacterDesign ? 'lineart-full-image' : (selectedItem.category === 'webtoon' ? 'webtoon-detail-image' : '')}
+                className={isLineart ? 'lineart-full-image' : (selectedItem.category === 'webtoon' ? 'webtoon-detail-image' : '')}
               />
             </div>
             
-            {/* Hide info panel for lineart AND character design */}
-            {!isLineart && !isCharacterDesign && (
+            {!isLineart && (
               <div className="detail-info">
                 <h2 className="detail-title">{selectedItem.title}</h2>
                 
