@@ -240,7 +240,22 @@ const Portfolio = () => {
                   )}
                 </div>
                 
+                {/* Webtoon button for webtoon items */}
                 {selectedItem.category === 'webtoon' && selectedItem.url && (
+                  <div className="detail-actions">
+                    <a 
+                      href={selectedItem.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="btn btn--primary"
+                    >
+                      Read on WEBTOON
+                    </a>
+                  </div>
+                )}
+                
+                {/* NEW: Webtoon button for personal items that have URL */}
+                {selectedItem.category === 'personal' && selectedItem.url && (
                   <div className="detail-actions">
                     <a 
                       href={selectedItem.url} 
