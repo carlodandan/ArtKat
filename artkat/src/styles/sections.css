@@ -227,6 +227,7 @@
 .detail-meta {
     display: flex;
     gap: 1rem;
+    margin-top: 2rem; /* Adjust the value as needed */
     margin-bottom: 0.7rem;
     flex-wrap: wrap;
 }

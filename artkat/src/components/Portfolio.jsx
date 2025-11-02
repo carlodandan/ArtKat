@@ -264,8 +264,8 @@ const Portfolio = () => {
                   </div>
                 )}
                 
-                {/* Remove category and platform badges for webtoon items */}
-                {selectedItem.category !== 'webtoon' && (
+                {/* Remove category and platform badges for webtoon AND personal items */}
+                {selectedItem.category !== 'webtoon' && !selectedItem.category.includes('personal') && (
                   <div className="detail-meta">
                     {/* Split categories by comma and render all */}
                     {selectedItem.category.split(',').map((cat, index) => {
