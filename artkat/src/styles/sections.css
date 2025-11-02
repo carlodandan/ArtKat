@@ -367,6 +367,7 @@ img {
     }
     
     .detail-title {
+        margin-top: 0.5rem !important;
         font-size: 1.5rem;
     }
     
