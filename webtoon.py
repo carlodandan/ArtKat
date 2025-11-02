@@ -37,6 +37,83 @@ def scrape_webtoon(url):
         print("❌ Could not extract all required metadata from the page")
         return None
 
+    # Extract genres - focus on reliable selectors
+    genres = []
+    
+    # Common genre selectors for WEBTOON
+    genre_selectors = [
+        '.detail_genre',  # Common for both canvas and originals
+        '.genre',
+        '.content_genre',
+        '.info_genre',
+        '.subj_info .genre',
+        '.detail_body .genre',
+        '.genre_list',
+        '.genre_info',
+        'span.genre',
+        'p.genre',
+        'div.genre'
+    ]
+    
+    for selector in genre_selectors:
+        genre_elements = soup.select(selector)
+        if genre_elements:
+            for genre_element in genre_elements:
+                genre_text = genre_element.get_text(strip=True)
+                if genre_text and genre_text.lower() not in ['genre', 'genres', 'category', 'categories']:
+                    # Clean and split genres
+                    clean_genre = genre_text.replace('Genre:', '').replace('Genres:', '').strip()
+                    # Split by common separators
+                    split_genres = []
+                    for separator in [',', '/', '·', '|']:
+                        if separator in clean_genre:
+                            split_genres = [g.strip() for g in clean_genre.split(separator)]
+                            break
+                    
+                    if not split_genres:
+                        split_genres = [clean_genre]
+                    
+                    # Filter out common non-genre words
+                    exclude_words = ['genre', 'genres', 'all', 'webtoon', 'canvas', 'originals', 'completed', 'ongoing']
+                    valid_genres = [g for g in split_genres if g and g.lower() not in exclude_words]
+                    genres.extend(valid_genres)
+    
+    # Remove duplicates while preserving order
+    seen = set()
+    unique_genres = []
+    for genre in genres:
+        if genre not in seen:
+            seen.add(genre)
+            unique_genres.append(genre)
+    
+    genres = unique_genres
+    
+    # If still no genres found, try breadcrumbs as last resort
+    if not genres:
+        breadcrumb_selectors = [
+            '.breadcrumb a',
+            '.nav_path a',
+            '.path a'
+        ]
+        
+        for selector in breadcrumb_selectors:
+            breadcrumbs = soup.select(selector)
+            potential_genres = []
+            for crumb in breadcrumbs:
+                crumb_text = crumb.get_text(strip=True)
+                # Common WEBTOON genres to look for in breadcrumbs
+                common_genres = [
+                    'Romance', 'Fantasy', 'Drama', 'Comedy', 'Action', 
+                    'Thriller', 'Horror', 'Slice of Life', 'Sci-Fi', 'Superhero',
+                    'Mystery', 'Adventure'
+                ]
+                if any(genre.lower() in crumb_text.lower() for genre in common_genres):
+                    potential_genres.append(crumb_text)
+            
+            if potential_genres:
+                genres = potential_genres
+                break
+
     # Format description with consistent ending
     description_text = description.get("content", "").strip()
     if not description_text.endswith("—Wanna know more? Click 'Read on Webtoon' button."):
@@ -47,7 +124,8 @@ def scrape_webtoon(url):
         "description": description_text,
         "poster": poster.get("content", ""),
         "platform": platform,
-        "url": url
+        "url": url,
+        "genres": genres
     }
 
     return data
@@ -98,6 +176,9 @@ def main():
         # Update the existing entry instead of adding duplicate
         for i, item in enumerate(existing_data):
             if item.get("url") == new_webtoon["url"]:
+                # Only update genres if we found new ones
+                if new_webtoon.get("genres") and not item.get("genres"):
+                    print("✅ Updated genres for existing webtoon entry")
                 existing_data[i] = new_webtoon
                 print("✅ Updated existing webtoon entry")
                 break
@@ -120,6 +201,7 @@ def main():
     print("\n📖 Webtoon Details:")
     print(f"   Title: {new_webtoon['title']}")
     print(f"   Platform: {new_webtoon['platform']}")
+    print(f"   Genres: {', '.join(new_webtoon['genres']) if new_webtoon['genres'] else 'Not found'}")
     print(f"   Description: {new_webtoon['description'][:100]}...")
 
 if __name__ == "__main__":
