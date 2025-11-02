@@ -104,6 +104,16 @@ const Portfolio = () => {
             <div className="portfolio-item__info">
               <h4>{item.title}</h4>
               <p className="webtoon-description">{trimDescription(item.description)}</p>
+              {/* Add genres display */}
+              {item.genres && item.genres.length > 0 && (
+                <div className="webtoon-genres">
+                  {item.genres.map((genre, index) => (
+                    <span key={index} className="genre-tag">
+                      {genre}
+                    </span>
+                  ))}
+                </div>
+              )}
               <div className="webtoon-meta">
                 <span className={`platform-badge ${platformClass}`}>{platformText}</span>
                 <span className="portfolio-item__category">webtoon</span>
@@ -242,23 +252,38 @@ const Portfolio = () => {
                   </div>
                 )}
                 
-                <div className="detail-meta">
-                  {/* Split categories by comma and render all */}
-                  {selectedItem.category.split(',').map((cat, index) => {
-                    const trimmedCat = cat.trim();
-                    return (
-                      <span key={index} className={`detail-category ${trimmedCat}`}>
-                        {trimmedCat}
+                {/* Add genres display in detail view */}
+                {selectedItem.genres && selectedItem.genres.length > 0 && (
+                  <div className="detail-genres">
+                    <strong>Genres: </strong>
+                    {selectedItem.genres.map((genre, index) => (
+                      <span key={index} className="genre-tag">
+                        {genre}
                       </span>
-                    );
-                  })}
-                  
-                  {selectedItem.platform && (
-                    <span className={`platform-badge ${selectedItem.platform === 'originals' ? 'platform-originals' : 'platform-canvas'}`}>
-                      {selectedItem.platform === 'originals' ? 'Originals' : 'Canvas'}
-                    </span>
-                  )}
-                </div>
+                    ))}
+                  </div>
+                )}
+                
+                {/* Remove category and platform badges for webtoon items */}
+                {selectedItem.category !== 'webtoon' && (
+                  <div className="detail-meta">
+                    {/* Split categories by comma and render all */}
+                    {selectedItem.category.split(',').map((cat, index) => {
+                      const trimmedCat = cat.trim();
+                      return (
+                        <span key={index} className={`detail-category ${trimmedCat}`}>
+                          {trimmedCat}
+                        </span>
+                      );
+                    })}
+                    
+                    {selectedItem.platform && (
+                      <span className={`platform-badge ${selectedItem.platform === 'originals' ? 'platform-originals' : 'platform-canvas'}`}>
+                        {selectedItem.platform === 'originals' ? 'Originals' : 'Canvas'}
+                      </span>
+                    )}
+                  </div>
+                )}
                 
                 {/* Webtoon button for webtoon items */}
                 {selectedItem.category === 'webtoon' && selectedItem.url && (
