@@ -184,6 +184,10 @@ const Portfolio = () => {
 
           {activeOthersTab === 'character_design' && (
             <div className="character-design-grid">
+              {/* Add header for character design section */}
+              <div className="category-header">
+                <em className="charDesign">Character design sheet from an unpublished anthology Webtoon series by NOSLEEPAREWE Studio.</em>
+              </div>
               {othersData.character_design.items.map((item, index) => (
                 <div 
                   key={index} 
@@ -195,7 +199,6 @@ const Portfolio = () => {
                     alt={item.title} 
                     className="portfolio-item__img" 
                   />
-                  {/* Removed title, description, and category tags */}
                 </div>
               ))}
             </div>

@@ -180,6 +180,11 @@
     font-weight: 400;
 }
 
+/* Add this to your sections.css file */
+.character-design-grid .category-header {
+    border-bottom: none;
+}
+
 /* === Detail Card Content === */
 .detail-image {
     background: var(--color-light-gray);
@@ -519,7 +524,7 @@ img {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
     border-bottom: 1px solid var(--color-light-gray);
     padding-bottom: 1rem;
 }
