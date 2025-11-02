@@ -237,3 +237,8 @@ h1, h2, h3, h4 {
 body.menu-open {
   overflow: hidden;
 }
+
+.biography {
+    text-align: justify;
+    text-indent: 2rem; 
+}

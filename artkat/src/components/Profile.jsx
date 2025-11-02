@@ -9,7 +9,7 @@ const Profile = () => {
         <div className="profile__grid">
           <div className="profile__bio">
             <h3>Biography</h3>
-            <p>
+            <p className="biography">
               ArtKat is a freelance digital artist based in the Philippines with expertise in character design, illustration, 
               and have experience in webtoon as an art assistant. Known for a distinctive artistic style that blends 
               traditional techniques with digital innovation.
