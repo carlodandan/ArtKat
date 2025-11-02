@@ -16,18 +16,15 @@
     "items": [
       {
         "title": "Danny",
-        "image": "/others/character_design_sheet/Danny.webp",
-        "description": "Complete character sheet with expressions and poses"
+        "image": "/others/character_design_sheet/Danny.webp"
       },
       {
         "title": "Lovely",
-        "image": "/others/character_design_sheet/Lovely.webp", 
-        "description": "Turnaround sheet and color palette"
+        "image": "/others/character_design_sheet/Lovely.webp"
       },
       {
         "title": "Miguel",
-        "image": "/others/character_design_sheet/Miguel.webp",
-        "description": "Villain character design with multiple outfits"
+        "image": "/others/character_design_sheet/Miguel.webp"
       }
     ]
   }

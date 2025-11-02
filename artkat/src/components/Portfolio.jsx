@@ -9,7 +9,7 @@ const Portfolio = () => {
   const [displayedItems, setDisplayedItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [showDetail, setShowDetail] = useState(false);
-  const [activeOthersTab, setActiveOthersTab] = useState('lineart'); // New state for others tabs
+  const [activeOthersTab, setActiveOthersTab] = useState('lineart');
 
   // Memoize allItems to prevent recalculation on every render
   const allItems = useMemo(() => [
