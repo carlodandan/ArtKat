@@ -1,5 +1,7 @@
 import React from 'react';
-
+/**
+ * Author: carlodandan (https://github.com/carlodandan)
+ */
 const Hero = () => {
   const scrollToPortfolio = () => {
     const element = document.getElementById('portfolio');

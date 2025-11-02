@@ -36,7 +36,9 @@
   -webkit-text-fill-color: transparent;
   animation: gradientShift 8s ease infinite;
 }
-
+/**
+ * Author: carlodandan (https://github.com/carlodandan)
+ */
 .gradient-overlay {
   position: absolute;
   top: 0;

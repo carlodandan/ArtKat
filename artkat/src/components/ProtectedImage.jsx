@@ -1,3 +1,6 @@
+/**
+ * Author: carlodandan (https://github.com/carlodandan)
+ */
 import React from 'react';
 
 const ProtectedImage = ({ src, alt, className, ...props }) => {

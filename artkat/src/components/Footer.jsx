@@ -9,5 +9,7 @@ const Footer = () => {
     </footer>
   );
 };
-
+/**
+ * Author: carlodandan (https://github.com/carlodandan)
+ */
 export default Footer;

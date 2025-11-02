@@ -1,3 +1,7 @@
+/**
+ * Author: carlodandan (https://github.com/carlodandan)
+ */
+
 import React from 'react';
 
 const Profile = () => {

@@ -11,7 +11,9 @@
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Inter', sans-serif;
 }
-
+/**
+ * Author: carlodandan (https://github.com/carlodandan)
+ */
 * {
     margin: 0;
     padding: 0;

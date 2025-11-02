@@ -402,6 +402,10 @@ img {
     min-height: 4.2em;
 }
 
+/**
+ * Author: carlodandan (https://github.com/carlodandan)
+ */
+
 /* Fallback for browsers without line-clamp support */
 .portfolio-item__info p {
     max-height: 4.2em;

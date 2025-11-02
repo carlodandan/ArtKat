@@ -299,7 +299,9 @@
     padding: 2rem 0;
     border-top: 1px solid #3A3A3A;
 }
-
+/**
+ * Author: carlodandan (https://github.com/carlodandan)
+ */
 /* === Responsive Components === */
 @media (max-width: 768px) {
     .nav__list {

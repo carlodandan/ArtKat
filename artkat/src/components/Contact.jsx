@@ -19,3 +19,7 @@ const Contact = () => {
 };
 
 export default Contact;
+
+/**
+ * Author: carlodandan (https://github.com/carlodandan)
+ */

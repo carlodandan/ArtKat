@@ -1,3 +1,6 @@
+/**
+ * Author: carlodandan (https://github.com/carlodandan)
+ */
 import React, { useState } from 'react';
 
 const Header = () => {
