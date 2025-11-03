@@ -344,6 +344,12 @@ img {
 
 /* === Responsive Sections === */
 @media (max-width: 768px) {
+    .hero {
+        height: 100vh; /* Changed from 95vh to 100vh */
+        max-height: 100vw; /* This makes it square - width equals height */
+        min-height: 100vw; /* Ensures it stays square */
+    }
+
     .hero__title {
         font-size: 2.5rem;
     }
@@ -355,6 +361,8 @@ img {
     .hero__background {
         filter: blur(4px) brightness(0.4);
         transform: scale(1.05);
+        background-size: cover;
+        background-position: center center;
     }
     
     .detail-image {
