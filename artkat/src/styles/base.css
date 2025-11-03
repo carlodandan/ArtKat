@@ -244,3 +244,51 @@ body.menu-open {
     text-align: justify;
     text-indent: 2rem; 
 }
+/* Mobile Scrollbar Styling */
+@media (max-width: 768px) {
+  /* For WebKit browsers (Safari, Chrome on iOS/Android) */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-dark-gray);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent-light);
+  }
+
+  /* For Firefox on mobile */
+  html {
+    scrollbar-color: var(--color-accent) var(--color-dark-gray);
+    scrollbar-width: thin;
+  }
+
+  /* Specific styling for detail description scrollbar on mobile */
+  .detail-description-container::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .detail-description-container::-webkit-scrollbar-track {
+    background: var(--color-light-gray);
+  }
+
+  .detail-description-container::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+  }
+
+  /* For elements with custom scroll */
+  .scrollable-element {
+    scrollbar-color: var(--color-accent) var(--color-dark-gray);
+    scrollbar-width: thin;
+  }
+}
+

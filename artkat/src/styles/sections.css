@@ -408,6 +408,7 @@ img {
     .webtoon-detail-image {
         max-height: 40vh;
     }
+    
 }
 
 /* === Portfolio Description Line Clamping === */
@@ -726,4 +727,88 @@ img {
     .detail-image img {
         max-height: none !important;
     }
+}
+
+/* Add to sections.css or components.css */
+
+/* Mobile Portfolio Filter Layout */
+@media (max-width: 768px) {
+  .portfolio__filters {
+    display: grid;
+    grid-template-areas: 
+      "all all"
+      "personal webtoon"
+      "others others"
+      "lineart character";
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .filter-btn[data-filter="all"] {
+    grid-area: all;
+    justify-self: center;
+    min-width: 120px;
+  }
+
+  .filter-btn[data-filter="personal"] {
+    grid-area: personal;
+  }
+
+  .filter-btn[data-filter="webtoon"] {
+    grid-area: webtoon;
+  }
+
+  .filter-btn[data-filter="others"] {
+    grid-area: others;
+    justify-self: center;
+    min-width: 120px;
+  }
+
+  /* Create pseudo-buttons for the tab labels */
+  .portfolio__filters::after {
+    content: "";
+    display: none;
+  }
+
+  /* Style the others tabs to look like filter buttons when others is active */
+  .others-tabs {
+    grid-area: lineart / character;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .others-tab {
+    margin: 0;
+    text-align: center;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  /* Show tabs only when others filter is active */
+  .portfolio__filters:not(:has(~ .portfolio__grid .others-container)) .others-tabs {
+    display: none !important;
+  }
+}
+
+/* Alternative approach using JavaScript to show/hide the tab navigation */
+/* Add this if the above CSS approach doesn't work perfectly */
+
+/* Mobile-specific others tabs styling */
+@media (max-width: 768px) {
+  .others-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin: 0.5rem 0 1.5rem 0;
+  }
+  
+  .others-tab {
+    margin: 0;
+    text-align: center;
+    padding: 0.8rem 0.5rem;
+    font-size: 0.9rem;
+  }
 }

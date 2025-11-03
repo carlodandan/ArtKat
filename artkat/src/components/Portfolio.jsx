@@ -168,7 +168,7 @@ const Portfolio = () => {
             className={`others-tab ${activeOthersTab === 'character_design' ? 'active' : ''}`}
             onClick={() => setActiveOthersTab('character_design')}
           >
-            Character Design Sheets
+            Character Design
           </button>
         </div>
 
