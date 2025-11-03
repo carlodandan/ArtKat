@@ -220,7 +220,8 @@
     font-family: var(--font-serif);
     font-size: 2rem;
     margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    margin-left: 0.5rem;
     color: var(--color-black);
 }
 
@@ -262,11 +263,24 @@
     margin-top: auto;
 }
 
+.detail-actions .btn--primary {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+    .detail-actions .btn--primary {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+}
+
 /* === Scrollable Description in Detail Card === */
 .detail-description-container {
     flex: 1;
     overflow-y: auto;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     max-height: 300px;
 }
 
@@ -379,6 +393,7 @@ img {
     
     .detail-title {
         margin-top: 0.5rem !important;
+        margin-left: 0.5rem;
         font-size: 1.5rem;
     }
     
