@@ -70,7 +70,7 @@
     color: var(--color-accent-light);
 }
 
-/* === Portfolio Items === */
+/* === Portfolio Filters === */
 .portfolio__filters {
     display: flex;
     justify-content: center;
@@ -95,6 +95,7 @@
     border-color: var(--color-accent);
 }
 
+/* === Portfolio Grid === */
 .portfolio__grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -131,9 +132,9 @@
 .portfolio-item.character-design img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Changed from 'contain' to 'cover' to eliminate black space */
-    object-position: center center; /* Ensure it's centered */
-    transform: scale(1.05); /* Slight zoom to eliminate edges */
+    object-fit: cover;
+    object-position: center center;
+    transform: scale(1.05);
 }
 
 .portfolio-item.personal img {
@@ -236,32 +237,6 @@
     transform: scale(1.1);
 }
 
-/* === Contact Links === */
-.contact__links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.social-link {
-    padding: 1rem 2rem;
-    border: 2px solid var(--color-accent);
-    text-decoration: none;
-    color: var(--color-accent);
-    font-weight: 500;
-    transition: all 0.3s ease;
-    display: inline-block;
-    border-radius: 10px;
-}
-
-.social-link:hover {
-    background-color: var(--color-accent);
-    color: var(--color-black);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(98, 255, 77, 0.3);
-}
-
 .detail-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -291,6 +266,32 @@
     padding: 1.5rem;
 }
 
+/* === Contact Links === */
+.contact__links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    padding: 1rem 2rem;
+    border: 2px solid var(--color-accent);
+    text-decoration: none;
+    color: var(--color-accent);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-block;
+    border-radius: 10px;
+}
+
+.social-link:hover {
+    background-color: var(--color-accent);
+    color: var(--color-black);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(98, 255, 77, 0.3);
+}
+
 /* === Footer === */
 .footer {
     background-color: var(--color-dark-gray);
@@ -299,9 +300,7 @@
     padding: 2rem 0;
     border-top: 1px solid #3A3A3A;
 }
-/**
- * Author: carlodandan (https://github.com/carlodandan)
- */
+
 /* === Responsive Components === */
 @media (max-width: 768px) {
     .nav__list {

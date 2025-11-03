@@ -11,9 +11,7 @@
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Inter', sans-serif;
 }
-/**
- * Author: carlodandan (https://github.com/carlodandan)
- */
+
 * {
     margin: 0;
     padding: 0;
@@ -22,24 +20,11 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-timeline: --scroll-timeline;
 }
 
-/* Custom scroll behavior with ease-in */
-@media (prefers-reduced-motion: no-preference) {
-    html {
-        scroll-behavior: smooth;
-    }
-    
-    /* Custom easing for smooth scroll */
-    * {
-        scroll-behavior: smooth;
-    }
-}
-
-/* Optional: Custom scrollbar styling for better visual experience */
+/* Minimal Scrollbar Styling - All Devices */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -48,13 +33,18 @@ html {
 
 ::-webkit-scrollbar-thumb {
     background: var(--color-accent);
-    border-radius: 4px;
+    border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--color-accent-light);
 }
 
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent) var(--color-dark-gray);
+}
 
 body {
     font-family: var(--font-sans);
@@ -98,197 +88,142 @@ h1, h2, h3, h4 {
 
 /* === Loading States === */
 .loading-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 0;
-  min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 0;
+    min-height: 400px;
 }
 
 .loading-spinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid var(--color-light-gray);
-  border-top: 4px solid var(--color-accent);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 1rem;
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--color-light-gray);
+    border-top: 4px solid var(--color-accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .loading-section p {
-  color: var(--color-mid-gray);
-  font-size: 1rem;
+    color: var(--color-mid-gray);
+    font-size: 1rem;
 }
 
 /* === Mobile Navigation === */
-
-/* Burger Menu Toggle */
 .nav__toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 21px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1001;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
 }
 
 .nav__toggle span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background-color: var(--color-black);
-  border-radius: 3px;
-  transition: all 0.3s ease;
-  transform-origin: center;
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--color-black);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    transform-origin: center;
 }
 
-/* Burger animation when active */
 .nav__toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
+    transform: rotate(45deg) translate(6px, 6px);
 }
 
 .nav__toggle.active span:nth-child(2) {
-  opacity: 0;
+    opacity: 0;
 }
 
 .nav__toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Mobile Dropdown Menu */
 .nav__dropdown {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(30, 30, 30, 0.98);
-  backdrop-filter: blur(20px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: translateY(-100%);
-  opacity: 0;
-  transition: all 0.4s ease;
-  z-index: 999;
-  visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(30, 30, 30, 0.98);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 999;
+    visibility: hidden;
 }
 
 .nav__dropdown.active {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
 }
 
 .nav__dropdown-list {
-  list-style: none;
-  text-align: center;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
 }
 
 .nav__dropdown-link {
-  display: block;
-  padding: 1.5rem 2rem;
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--color-mid-gray);
-  text-decoration: none;
-  transition: all 0.3s ease;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: block;
+    padding: 1.5rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--color-mid-gray);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav__dropdown-link:hover {
-  color: var(--color-accent-light);
-  background: rgba(0, 220, 100, 0.1);
-  transform: translateX(10px);
+    color: var(--color-accent-light);
+    background: rgba(0, 220, 100, 0.1);
+    transform: translateX(10px);
 }
 
 /* === Responsive Components === */
 @media (max-width: 768px) {
-  .nav__list {
-    display: none;
-  }
-  
-  .nav__toggle {
-    display: flex;
-  }
-  
-  /* Adjust header padding for mobile */
-  .nav {
-    padding: 0.8rem 0;
-  }
-  
-  /* Ensure dropdown appears above everything */
-  .nav__dropdown {
-    z-index: 1000;
-  }
+    .nav__list {
+        display: none;
+    }
+    
+    .nav__toggle {
+        display: flex;
+    }
+    
+    .nav {
+        padding: 0.8rem 0;
+    }
+    
+    .nav__dropdown {
+        z-index: 1000;
+    }
 }
 
-/* Prevent body scroll when menu is open */
 body.menu-open {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .biography {
     text-align: justify;
-    text-indent: 2rem; 
+    text-indent: 2rem;
 }
-/* Mobile Scrollbar Styling */
-@media (max-width: 768px) {
-  /* For WebKit browsers (Safari, Chrome on iOS/Android) */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: var(--color-dark-gray);
-    border-radius: 3px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: var(--color-accent);
-    border-radius: 3px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-accent-light);
-  }
-
-  /* For Firefox on mobile */
-  html {
-    scrollbar-color: var(--color-accent) var(--color-dark-gray);
-    scrollbar-width: thin;
-  }
-
-  /* Specific styling for detail description scrollbar on mobile */
-  .detail-description-container::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  .detail-description-container::-webkit-scrollbar-track {
-    background: var(--color-light-gray);
-  }
-
-  .detail-description-container::-webkit-scrollbar-thumb {
-    background: var(--color-accent);
-  }
-
-  /* For elements with custom scroll */
-  .scrollable-element {
-    scrollbar-color: var(--color-accent) var(--color-dark-gray);
-    scrollbar-width: thin;
-  }
-}
-
