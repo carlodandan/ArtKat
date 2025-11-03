@@ -224,6 +224,7 @@ const Portfolio = () => {
 
     const isLineart = selectedItem.category === 'lineart';
     const isCharacterDesign = selectedItem.category === 'character_design';
+    const hasButton = (selectedItem.category === 'webtoon' || selectedItem.category.includes('personal')) && selectedItem.url;
 
     return (
       <div className="detail-overlay" onClick={closeDetail}>
@@ -244,71 +245,71 @@ const Portfolio = () => {
             {/* Hide info panel for lineart AND character design */}
             {!isLineart && !isCharacterDesign && (
               <div className="detail-info">
-                <h2 className="detail-title">{selectedItem.title}</h2>
-                
-                {selectedItem.description && (
-                  <div className="detail-description-container">
-                    <p className="detail-description">{selectedItem.description}</p>
-                  </div>
-                )}
-                
-                {/* Add genres display in detail view */}
-                {selectedItem.genres && selectedItem.genres.length > 0 && (
-                  <div className="detail-genres">
-                    <strong>Genres: </strong>
-                    {selectedItem.genres.map((genre, index) => (
-                      <span key={index} className="genre-tag">
-                        {genre}
-                      </span>
-                    ))}
-                  </div>
-                )}
-                
-                {/* Remove category and platform badges for webtoon AND personal items */}
-                {selectedItem.category !== 'webtoon' && !selectedItem.category.includes('personal') && (
-                  <div className="detail-meta">
-                    {/* Split categories by comma and render all */}
-                    {selectedItem.category.split(',').map((cat, index) => {
-                      const trimmedCat = cat.trim();
-                      return (
-                        <span key={index} className={`detail-category ${trimmedCat}`}>
-                          {trimmedCat}
-                        </span>
-                      );
-                    })}
-                    
-                    {selectedItem.platform && (
-                      <span className={`platform-badge ${selectedItem.platform === 'originals' ? 'platform-originals' : 'platform-canvas'}`}>
-                        {selectedItem.platform === 'originals' ? 'Originals' : 'Canvas'}
-                      </span>
-                    )}
-                  </div>
-                )}
-                
-                {/* Webtoon button for webtoon items */}
-                {selectedItem.category === 'webtoon' && selectedItem.url && (
-                  <div className="detail-actions">
+                {/* Title Section */}
+                <div className="detail-header">
+                  <h2 className="detail-title">{selectedItem.title}</h2>
+                </div>
+
+                {/* Scrollable Content Section */}
+                <div className="detail-scrollable">
+                  {/* Summary/Description */}
+                  {selectedItem.description && (
+                    <div className="detail-summary">
+                      <h3 className="detail-subtitle">Summary</h3>
+                      <div className="detail-description-container">
+                        <p className="detail-description">{selectedItem.description}</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Genres for Webtoon */}
+                  {selectedItem.genres && selectedItem.genres.length > 0 && (
+                    <div className="detail-genres-section">
+                      <h3 className="detail-subtitle">Genres</h3>
+                      <div className="detail-genres">
+                        {selectedItem.genres.map((genre, index) => (
+                          <span key={index} className="genre-tag">
+                            {genre}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Categories for non-webtoon, non-personal items */}
+                  {selectedItem.category !== 'webtoon' && !selectedItem.category.includes('personal') && (
+                    <div className="detail-categories-section">
+                      <h3 className="detail-subtitle">Categories</h3>
+                      <div className="detail-meta">
+                        {selectedItem.category.split(',').map((cat, index) => {
+                          const trimmedCat = cat.trim();
+                          return (
+                            <span key={index} className={`detail-category ${trimmedCat}`}>
+                              {trimmedCat}
+                            </span>
+                          );
+                        })}
+                        
+                        {selectedItem.platform && (
+                          <span className={`platform-badge ${selectedItem.platform === 'originals' ? 'platform-originals' : 'platform-canvas'}`}>
+                            {selectedItem.platform === 'originals' ? 'Originals' : 'Canvas'}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Fixed Button Section */}
+                {hasButton && (
+                  <div className="detail-actions-fixed">
                     <a 
                       href={selectedItem.url} 
                       target="_blank" 
                       rel="noopener noreferrer" 
                       className="btn btn--primary"
                     >
-                      Read on WEBTOON
-                    </a>
-                  </div>
-                )}
-                
-                {/* Webtoon button for personal items that have URL */}
-                {selectedItem.category.includes('personal') && selectedItem.url && (
-                  <div className="detail-actions">
-                    <a 
-                      href={selectedItem.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="btn btn--primary"
-                    >
-                      Read on WEBTOON
+                      {selectedItem.category === 'webtoon' ? 'Read on WEBTOON' : 'Read on WEBTOON'}
                     </a>
                   </div>
                 )}
