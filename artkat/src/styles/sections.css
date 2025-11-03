@@ -598,12 +598,19 @@ img {
     display: block !important;
     background: #1e1e1e !important;
     grid-template-columns: 1fr;
-    max-width: 90vw;
+    max-width: 95vw;
+    padding: 0; /* Remove padding */
+}
+.lineart-detail .detail-image {
+    max-height: none !important;
+    height: auto;
+    padding: 0;
+    background: transparent;
 }
 
 .lineart-full-image {
-    max-width: 100%;
-    max-height: 85vh;
+    max-width: 95vw;
+    max-height: 90vh;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -643,10 +650,6 @@ img {
     .character-design-grid {
         grid-template-columns: 1fr;
     }
-    
-    .lineart-full-image {
-        max-height: 70vh;
-    }
 }
 
 /* === Webtoon Genres Styles === */
@@ -679,4 +682,33 @@ img {
   color: var(--color-black);
   font-weight: 500;
   font-size: small;
+}
+
+/* Responsive Design for Others Section */
+@media (max-width: 768px) {
+    .lineart-full-image {
+        max-width: 98vw;
+        max-height: 95vh;
+    }
+    
+    .lineart-detail {
+        max-width: 98vw;
+        margin: 0;
+    }
+    
+    .lineart-detail .detail-image {
+        max-height: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Override any mobile styles that might be limiting the image */
+    .detail-image {
+        max-height: none !important;
+    }
+    
+    .detail-image img {
+        max-height: none !important;
+    }
 }
