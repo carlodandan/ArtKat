@@ -32,7 +32,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--color-accent);
+    background: var(--color-mid-gray);
     border-radius: 2px;
 }
 
@@ -43,7 +43,7 @@ html {
 /* Firefox */
 * {
     scrollbar-width: thin;
-    scrollbar-color: var(--color-accent) var(--color-dark-gray);
+    scrollbar-color: var(--color-mid-gray) var(--color-dark-gray);
 }
 
 body {

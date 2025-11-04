@@ -596,7 +596,7 @@ img {
   font-family: var(--font-serif);
   font-size: 1.2rem;
   color: var(--color-black);
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.3rem;
   font-weight: 600;
 }
 
@@ -633,7 +633,7 @@ img {
   line-height: 1.6;
   color: var(--color-mid-gray);
   white-space: pre-line;
-  margin: 0;
+  margin: 1rem;
   text-align: justify;
   text-indent: 2rem;
 }
