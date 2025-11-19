@@ -1,0 +1,29 @@
+{
+  "lineart": {
+    "category": "lineart",
+    "title": "Art Process",
+    "images": [
+      "elf.webp",
+      "axe.webp",
+      "gun.webp"
+    ]
+  },
+  "character_design": {
+    "category": "character_design",
+    "title": "Character Design Sheets",
+    "items": [
+      {
+        "title": "Danny",
+        "image": "/src/assets/others/character_design_sheet/Danny.webp"
+      },
+      {
+        "title": "Lovely",
+        "image": "/src/assets/others/character_design_sheet/Lovely.webp"
+      },
+      {
+        "title": "Miguel",
+        "image": "/src/assets/others/character_design_sheet/Miguel.webp"
+      }
+    ]
+  }
+}

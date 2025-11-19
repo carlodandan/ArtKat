@@ -1,0 +1,13 @@
+
+/**
+ * Author: carlodandan (https://github.com/carlodandan)
+ */
+/* Lazy loading for offscreen images */
+.portfolio-item:not(.character_design) img {
+    loading: lazy;
+}
+
+/* Preload critical images */
+.hero__background {
+    fetchpriority: high;
+}

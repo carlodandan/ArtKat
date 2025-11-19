@@ -1,0 +1,763 @@
+/* === Hero Section === */
+.hero {
+    height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-dark-gray);
+    border-bottom: 1px solid var(--color-light-gray);
+}
+
+.hero__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(3px) brightness(0.4);
+    z-index: 1;
+}
+
+.hero__overlay {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero__content {
+    color: var(--color-black);
+    text-align: center;
+}
+
+.hero__title {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    color: var(--color-black);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.hero__tagline {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--color-mid-gray);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.hero .btn--primary {
+    background-color: #044a248f;
+    color: var(--color-black);
+    border: 2px solid var(--color-accent);
+    font-weight: 600;
+}
+
+.hero .btn--primary:hover {
+    background-color: transparent;
+    color: var(--color-accent-light);
+    border: 2px solid var(--color-accent-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(98, 255, 77, 0.3);
+}
+
+/* === Profile Section === */
+#profile {
+    padding-top: 3rem;
+    border-bottom: 1px solid var(--color-light-gray);
+}
+
+.profile__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.profile__bio h3,
+.profile__timeline h3,
+.profile__skills h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--color-black);
+}
+
+.profile__timeline li,
+.skills__list li {
+    margin-bottom: 0.5rem;
+    border-left: 2px solid var(--color-light-gray);
+    padding-left: 1rem;
+}
+
+.skills__list {
+    padding-left: 30px;
+}
+
+.milestones {
+    padding-left: 30px;
+    margin-bottom: 3rem;
+}
+
+/* === Webtoon Specific Styles === */
+.webtoon-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.webtoon-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    color: var(--color-mid-gray);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.webtoon-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.platform-badge {
+    padding: 0.6rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.platform-originals,
+.platform-canvas {
+    background-color: var(--color-white);
+    color: var(--color-accent);
+    border: 1px solid var(--color-mid-gray);
+}
+
+.portfolio-item__category {
+    font-size: 0.75rem;
+    color: var(--color-mid-gray);
+    text-transform: capitalize;
+}
+
+/* === Category Headers === */
+.category-header {
+    grid-column: 1 / -1;
+    text-align: center;
+    border-bottom: 1px solid var(--color-light-gray);
+}
+
+.category-header em {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--color-mid-gray);
+    font-weight: 400;
+}
+
+.character-design-grid .category-header {
+    border-bottom: none;
+}
+
+/* === Detail Card Content === */
+.detail-image {
+    background: var(--color-light-gray);
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.detail-image img {
+    max-width: 80%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.detail-info {
+    padding: 2rem 2rem;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.detail-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    margin: 2rem 0 1rem 0.5rem;
+    color: var(--color-black);
+}
+
+.detail-meta {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0 0.7rem 0;
+    flex-wrap: wrap;
+}
+
+.detail-category {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.detail-category.personal,
+.detail-category.fanart {
+    background: rgba(31, 210, 25, 0.2);
+    color: #69f664;
+    border: 1px solid #9af664;
+}
+
+.detail-category.webtoon {
+    background: rgba(56, 142, 60, 0.2);
+    color: #81C784;
+    border: 1px solid #81C784;
+}
+
+.detail-category.lineart,
+.detail-category.character_design {
+    background: rgba(86, 61, 124, 0.2);
+    color: #00dc64;
+    border: 1px solid #00dc64;
+}
+
+.detail-actions {
+    margin-top: auto;
+}
+
+.detail-actions .btn--primary {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* === Scrollable Description === */
+.detail-description-container {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 1.5rem;
+    max-height: 300px;
+}
+
+.detail-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-mid-gray);
+    white-space: pre-line;
+    margin: 0.5rem;
+    text-align: justify;
+    text-indent: 2rem;
+}
+
+/* === Image Styles === */
+.webtoon-thumbnail {
+    object-fit: contain !important;
+    background-color: var(--color-light-gray);
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.webtoon-detail-image {
+    object-fit: contain;
+    max-height: 100vh;
+    width: auto;
+    max-width: 100%;
+}
+
+.protected-image,
+.portfolio-item__img {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+
+/* === Portfolio Description Line Clamping === */
+.portfolio-description,
+.webtoon-description,
+.personal-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    color: var(--color-mid-gray);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    min-height: 4.2em;
+}
+
+/* === Others Section Styles === */
+.others-container {
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-content: center;
+}
+
+.others-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-light-gray);
+    padding-bottom: 1rem;
+}
+
+.others-tab {
+    padding: 0.8rem 2rem;
+    background: none;
+    border: 1px solid var(--color-mid-gray);
+    color: var(--color-mid-gray);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.others-tab.active {
+    background-color: #005025;
+    color: var(--color-black);
+    border-color: var(--color-accent);
+}
+
+.others-tab:hover {
+    background-color: var(--color-accent);
+    color: var(--color-black);
+    border-color: var(--color-accent);
+}
+
+.others-tab-content {
+    min-height: 400px;
+}
+
+.lineart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.lineart-image {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-light-gray);
+    border-radius: 10px;
+}
+
+.character-design-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.lineart-item,
+.portfolio-item.character-design {
+    border-color: #3A3A3A;
+}
+
+.lineart-item:hover,
+.portfolio-item.character-design:hover {
+    border-color: #00dc64;
+}
+
+/* === Lineart Detail View === */
+.lineart-detail {
+    display: block !important;
+    background: #1e1e1e !important;
+    grid-template-columns: 1fr;
+    max-width: 95vw;
+    padding: 0;
+}
+
+.lineart-detail .detail-image {
+    max-height: none !important;
+    height: auto;
+    padding: 0;
+    background: transparent;
+}
+
+.lineart-full-image {
+    max-height: 100vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.lineart-detail .detail-info {
+    display: none;
+}
+
+/* === Webtoon Genres === */
+.webtoon-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.genre-tag {
+    padding: 0.115rem 0.4rem;
+    background-color: var(--color-light-gray);
+    color: var(--color-mid-gray);
+    border-radius: 15px;
+    font-size: small;
+    font-weight: 500;
+    border: 1px solid var(--color-mid-gray);
+}
+
+.detail-genres {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.detail-genres strong {
+    color: var(--color-black);
+    font-weight: 500;
+    font-size: small;
+}
+
+.studio-link {
+    text-decoration: none;
+    color: #b0b0b0;
+}
+
+.studio-link:hover {
+    color: #555555;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+    .hero {
+        height: 100vh;
+        max-height: 200vw;
+        min-height: 100vw;
+    }
+
+    .hero__title {
+        font-size: 2.5rem;
+    }
+    
+    .hero__tagline {
+        font-size: 1.2rem;
+    }
+    
+    .hero__background {
+        filter: blur(4px) brightness(0.4);
+        transform: scale(1.05);
+    }
+    
+    .detail-image {
+        max-height: 40vh;
+    }
+    
+    .detail-image img {
+        height: 100%;
+    }
+    
+    .detail-info {
+        padding: 2rem 1.5rem;
+    }
+    
+    .detail-title {
+        margin-top: 0.5rem !important;
+        font-size: 1.5rem;
+    }
+    
+    .detail-description {
+        font-size: 1rem;
+    }
+    
+    .detail-description-container {
+        max-height: 200px;
+    }
+    
+    .webtoon-detail-image {
+        max-height: 40vh;
+    }
+    
+    .others-tabs {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .others-tab {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .character-design-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .lineart-item {
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .lineart-full-image {
+        max-width: 98vw;
+        max-height: 95vh;
+    }
+    
+    .lineart-detail {
+        max-width: 98vw;
+        margin: 0;
+    }
+    
+    .detail-actions .btn--primary {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+    
+    /* Mobile Portfolio Filter Layout */
+    .portfolio__filters {
+        display: grid;
+        grid-template-areas: 
+            "all all"
+            "personal webtoon"
+            "others others"
+            "lineart character";
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .filter-btn[data-filter="all"] {
+        grid-area: all;
+        justify-self: center;
+        min-width: 120px;
+    }
+
+    .filter-btn[data-filter="personal"] {
+        grid-area: personal;
+    }
+
+    .filter-btn[data-filter="webtoon"] {
+        grid-area: webtoon;
+    }
+
+    .filter-btn[data-filter="others"] {
+        grid-area: others;
+        justify-self: center;
+        min-width: 120px;
+    }
+
+    .others-tabs {
+        grid-area: lineart / character;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .others-tab {
+        margin: 0;
+        text-align: center;
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* === Detail Card Structure === */
+.detail-header {
+  margin-bottom: 1.5rem;
+}
+
+.detail-subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--color-black);
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.detail-scrollable {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+.detail-summary,
+.detail-genres-section,
+.detail-categories-section {
+  margin-bottom: 1rem;
+}
+
+.detail-actions-fixed {
+  position: sticky;
+  bottom: 0;
+  background: var(--color-dark-gray);
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-light-gray);
+  margin-top: auto;
+}
+
+/* Scrollable description improvements */
+.detail-description-container {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 0;
+}
+
+.detail-description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-mid-gray);
+  white-space: pre-line;
+  margin: 1rem;
+  text-align: justify;
+  text-indent: 2rem;
+}
+
+/* Genres section styling */
+.detail-genres-section .detail-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0;
+}
+
+/* Categories section styling */
+.detail-categories-section .detail-meta {
+  margin: 0;
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .detail-info {
+    padding: 1.5rem 1.5rem;
+  }
+  
+  .detail-scrollable {
+    margin-bottom: 0.5rem;
+  }
+  
+  .detail-summary,
+  .detail-genres-section,
+  .detail-categories-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .detail-actions-fixed {
+    padding-top: 0.8rem;
+  }
+  
+  .detail-description-container {
+    max-height: 150px;
+  }
+}
+
+/* Art Process Hover Overlay */
+.art-process-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.art-process-hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.art-process-column:hover .art-process-hover-overlay {
+  opacity: 1;
+}
+
+.art-process-hover-text {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .art-process-hover-text {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+  }
+}
+
+/* Page containers */
+.home-page,
+.profile-page,
+.artwork-page,
+.contact-page {
+  min-height: calc(100vh - 120px); /* Adjust based on your header/footer height */
+}
+
+.artwork-page {
+    padding-top: 3rem;
+}
+
+.contact-page {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Loading states */
+.loading-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

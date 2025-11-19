@@ -1,0 +1,75 @@
+[
+  {
+    "title": "Magical Elf Girl",
+    "category": "personal",
+    "image": "/src/assets/personal/elf.webp",
+    "description": "A serene scene unfolds beneath the emerald canopy of an ancient forest. Soft beams of golden sunlight filter through the leaves, illuminating a graceful elf girl with shimmering silver hair and moonlit eyes. Adorned in delicate, nature-woven garments, she stands barefoot on a carpet of moss and wildflowers, her pointed ears peeking through braided locks. With an aura that blends wisdom and innocence, she seems to listen to the whispers of the trees, embodying the mystical harmony between magic and nature."
+  },
+  {
+    "title": "Warrior of Women Tribe",
+    "category": "personal",
+    "image": "/src/assets/personal/axe.webp",
+    "description": "In a land where strength and sisterhood reign, she stands fierce and unyielding. Clad in intricately crafted armor adorned with tribal symbols, the warrior carries her blade with honor and purpose. Her eyes reflect the fire of countless battles fought to protect her people. With braided hair crowned in feathers and beads, she exudes both grace and power—a living testament to the resilience, courage, and unity of the Women Tribe."
+  },
+  {
+    "title": "Assassin of the Night",
+    "category": "personal",
+    "image": "/src/assets/personal/A3.webp",
+    "description": "Shrouded in moonlit shadows, she moves with silent precision through the darkened city. Cloaked in obsidian leather and armed with twin daggers that glint like stars, the assassin is a phantom—swift, elegant, and deadly. Her piercing gaze is the last thing her targets ever see. With every step, she commands the night itself, a master of stealth bound to a destiny only whispered about in fearful legends."
+  },
+  {
+    "title": "Portrait of Lonely Girl",
+    "category": "personal",
+    "image": "/src/assets/personal/A4.webp",
+    "description": "Bathed in soft, cool hues, she sits quietly against a blurred backdrop, lost in her own world. Her flowing blue hair frames a delicate face, eyes distant and filled with unspoken thoughts. A gentle melancholy surrounds her, as if she's waiting—for a moment, a memory, or someone who may never return. The portrait captures the fragile beauty of solitude, where emotions linger just beneath the surface, like waves beneath still waters."
+  },
+  {
+    "title": "Frieren",
+    "category": "personal,fanart",
+    "image": "/src/assets/personal/A5.webp",
+    "description": "Inspired by the quiet elegance of the elven mage, this fan art captures Frieren in a moment of serene reflection. Her long, silver hair flows like moonlit silk, contrasting with the soft, distant gaze in her amber eyes. Dressed in her signature white cloak, she stands amidst a peaceful, fading landscape—symbolizing the passage of time she alone will endure. A tribute to her timeless journey, this artwork honors both her strength and her gentle, introspective soul."
+  },
+  {
+    "title": "Lady Mechanika",
+    "category": "personal,fanart",
+    "image": "/src/assets/personal/A6.webp",
+    "description": "A striking fusion of steampunk elegance and fierce determination, this fan art brings Lady Mechanika to life in intricate detail. Dressed in her signature corseted attire with ornate brass and leather accents, she stands poised and ready, her mechanical limbs gleaming under the industrial light. Gears, cogs, and clockwork elements surround her, symbolizing the world she navigates—one of mystery, invention, and untamed adventure. Her piercing eyes and confident stance reflect both her haunted past and unbreakable spirit, honoring the iconic heroine of the steampunk genre."
+  },
+  {
+    "title": "Tasuki",
+    "category": "personal,fanart",
+    "image": "/src/assets/personal/tasuki.webp",
+    "description": "With fiery red hair and a sharp, rebellious grin, Tasuki stands ready—fan in hand, flames flickering at his command. This fan art captures his hot-headed charm and bold spirit, set against a backdrop inspired by the magical world of the Four Gods. Dressed in his iconic bandit attire with the tessen slung over his shoulder, Tasuki radiates raw energy and loyalty, a tribute to one of Fushigi Yugi’s most unforgettable warriors."
+  },
+  {
+    "title": "Original Character #1",
+    "category": "personal",
+    "image": "/src/assets/personal/originalchar.webp",
+    "description": "A determined young woman crouches in a powerful stance, gripping a wooden staff as if ready to strike. Her long, reddish-brown hair flows behind her, and her sharp green eyes lock forward with fierce focus. Dressed in a simple t-shirt and loose pants, she looks both grounded and battle-ready, lit by dramatic shading that highlights her strength and intensity. The artwork blends dynamic perspective with soft painterly textures, capturing the moment just before action unfolds."
+  },
+  {
+    "title": "Character from Blindead (a Webtoon Series)",
+    "category": "personal,fanart",
+    "image": "/src/assets/personal/oc_mark.webp",
+    "description": "Are you gonna listen to your demon, or is he gonna listen to you? - Read more about this webtoon series made by Markulangot.",
+    "url": "https://www.webtoons.com/en/canvas/blindead/list?title_no=641390"
+  },
+  {
+    "title": "Belldandy",
+    "category": "personal",
+    "image": "/src/assets/personal/beldandy.webp",
+    "description": "Graceful and serene, Belldandy radiates a gentle, divine warmth. With her flowing hair, soft expression, and elegant presence, she embodies kindness and celestial beauty. Calm and timeless, she feels like a blessing in human form—an angelic figure whose quiet smile brings peace to anyone who sees her."
+  },
+  {
+    "title": "Original Character #2",
+    "category": "personal",
+    "image": "/src/assets/personal/originalchar2.webp",
+    "description": "A strong, confident girl stands with a bat over her shoulder, looking down with calm determination. Dressed in casual clothes and lit by soft shadows, she radiates quiet power and attitude."
+  },
+  {
+    "title": "Alluring Woman",
+    "category": "personal",
+    "image": "/src/assets/personal/alluringwoman.webp",
+    "description": "A woman lies on her back in a relaxed pose, looking calmly toward the viewer. Soft lighting highlights her skin and the gentle folds of her clothing, creating a warm and intimate atmosphere. The artwork focuses on mood and form, blending subtle colors with smooth shading for a quiet, contemplative scene."
+  }
+]
