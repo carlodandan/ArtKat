@@ -69,7 +69,7 @@ const Portfolio = () => {
     // Generate full image path from crop image path
     const fileName = imageSrc.split('/').pop();
     const baseName = fileName.replace(/\.[^/.]+$/, ""); // Remove file extension
-    const fullImagePath = `/src/assets/others/process/full/${baseName}.webp`;
+    const fullImagePath = `/img/others/process/full/${baseName}.webp`;
     
     setSelectedItem({
       title: `${type.charAt(0).toUpperCase() + type.slice(1)} Sample`,
@@ -161,9 +161,9 @@ const Portfolio = () => {
     const baseName = fileName.replace(/\.[^/.]+$/, ""); // Remove file extension
     
     return {
-      lineart: `/src/assets/others/process/crop/${baseName}_lineart.webp`,
-      flat: `/src/assets/others/process/crop/${baseName}_flat.webp`,
-      rendered: `/src/assets/others/process/crop/${baseName}_rendered.webp`
+      lineart: `/img/others/process/crop/${baseName}_lineart.webp`,
+      flat: `/img/others/process/crop/${baseName}_flat.webp`,
+      rendered: `/img/others/process/crop/${baseName}_rendered.webp`
     };
   };
 
