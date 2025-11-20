@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import webtoonData from '../data/webtoon.json';
 import personalData from '../data/personal.json';
 import othersData from '../data/others.json';
@@ -7,6 +8,8 @@ import './Portfolio.css';
 import './Animation.css';
 
 const Portfolio = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = useState('all');
   const [displayedItems, setDisplayedItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -22,6 +25,25 @@ const Portfolio = () => {
     }))
   ], []);
 
+  // Handle route changes
+  useEffect(() => {
+    const path = location.pathname;
+    
+    if (path === '/artwork/all' || path === '/artwork') {
+      setActiveFilter('all');
+    } else if (path === '/artwork/personal') {
+      setActiveFilter('personal');
+    } else if (path === '/artwork/webtoon') {
+      setActiveFilter('webtoon');
+    } else if (path === '/artwork/others' || path === '/artwork/others/art-process') {
+      setActiveFilter('others');
+      setActiveOthersTab('lineart');
+    } else if (path === '/artwork/others/character-design') {
+      setActiveFilter('others');
+      setActiveOthersTab('character_design');
+    }
+  }, [location.pathname]);
+
   // Function to trim description to 3 lines
   const trimDescription = (description, maxLines = 3) => {
     return description;
@@ -33,20 +55,45 @@ const Portfolio = () => {
 
   // Memoize filterItems function
   const filterItems = useCallback((filter) => {
-  if (filter === 'all') {
-    setDisplayedItems(allItems);
-  } else if (filter === 'others') {
-    setDisplayedItems([]);
-  } else if (filter === 'personal') {
-    // For personal filter, check if category includes 'personal'
-    setDisplayedItems(allItems.filter(item => 
-      item.category.includes('personal')
-    ));
-  } else {
-    // For other filters (like webtoon), use exact match
-    setDisplayedItems(allItems.filter(item => item.category === filter));
-  }
-}, [allItems]);
+    if (filter === 'all') {
+      setDisplayedItems(allItems);
+    } else if (filter === 'others') {
+      setDisplayedItems([]);
+    } else if (filter === 'personal') {
+      // For personal filter, check if category includes 'personal'
+      setDisplayedItems(allItems.filter(item => 
+        item.category.includes('personal')
+      ));
+    } else {
+      // For other filters (like webtoon), use exact match
+      setDisplayedItems(allItems.filter(item => item.category === filter));
+    }
+  }, [allItems]);
+
+  // Handle filter changes with navigation
+  const handleFilterChange = useCallback((filter) => {
+    setActiveFilter(filter);
+    
+    // Update URL based on filter
+    if (filter === 'all') {
+      navigate('/artwork/all');
+    } else if (filter === 'others') {
+      navigate('/artwork/others/art-process');
+    } else {
+      navigate(`/artwork/${filter}`);
+    }
+  }, [navigate]);
+
+  // Handle others tab changes with navigation
+  const handleOthersTabChange = useCallback((tab) => {
+    setActiveOthersTab(tab);
+    
+    if (tab === 'lineart') {
+      navigate('/artwork/others/art-process');
+    } else if (tab === 'character_design') {
+      navigate('/artwork/others/character-design');
+    }
+  }, [navigate]);
 
   // Memoize category header
   const categoryHeader = useMemo(() => {
@@ -180,13 +227,13 @@ const Portfolio = () => {
         <div className="others-tabs">
           <button 
             className={`others-tab ${activeOthersTab === 'lineart' ? 'active' : ''}`}
-            onClick={() => setActiveOthersTab('lineart')}
+            onClick={() => handleOthersTabChange('lineart')}
           >
             Art Process
           </button>
           <button 
             className={`others-tab ${activeOthersTab === 'character_design' ? 'active' : ''}`}
-            onClick={() => setActiveOthersTab('character_design')}
+            onClick={() => handleOthersTabChange('character_design')}
           >
             Character Design
           </button>
@@ -283,7 +330,7 @@ const Portfolio = () => {
         </div>
       </div>
     );
-  }, [activeFilter, activeOthersTab, handleItemClick, handleLineartClick]);
+  }, [activeFilter, activeOthersTab, handleItemClick, handleLineartClick, handleOthersTabChange]);
 
   // Memoize detail card renderer
   const renderDetailCard = useMemo(() => {
@@ -411,28 +458,28 @@ const Portfolio = () => {
         <div className="portfolio__filters">
           <button 
             className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
-            onClick={() => setActiveFilter('all')}
+            onClick={() => handleFilterChange('all')}
             data-filter="all"
           >
             All
           </button>
           <button 
             className={`filter-btn ${activeFilter === 'personal' ? 'active' : ''}`}
-            onClick={() => setActiveFilter('personal')}
+            onClick={() => handleFilterChange('personal')}
             data-filter="personal"
           >
             Personal
           </button>
           <button 
             className={`filter-btn ${activeFilter === 'webtoon' ? 'active' : ''}`}
-            onClick={() => setActiveFilter('webtoon')}
+            onClick={() => handleFilterChange('webtoon')}
             data-filter="webtoon"
           >
             Webtoon
           </button>
           <button 
             className={`filter-btn ${activeFilter === 'others' ? 'active' : ''}`}
-            onClick={() => setActiveFilter('others')}
+            onClick={() => handleFilterChange('others')}
             data-filter="others"
           >
             Others
@@ -448,6 +495,3 @@ const Portfolio = () => {
 };
 
 export default Portfolio;
-/**
- * Author: carlodandan (https://github.com/carlodandan)
- */
