@@ -6,7 +6,12 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: 'autoUpdate' })
+      registerType: 'autoUpdate',
+      workbox: {
+        globPatterns: [
+          '**/*.{js,css,html,ico,png,jpg,jpeg,webp,svg,woff,woff2,ttf,eot}']
+      }
+    })
   ],
   build: {
     outDir: 'dist'
