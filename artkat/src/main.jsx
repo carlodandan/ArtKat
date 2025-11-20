@@ -5,7 +5,6 @@ import './styles/base.css';
 import './styles/components.css';
 import './styles/sections.css';
 import './styles/performance.css';
-import './styles/animation.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
