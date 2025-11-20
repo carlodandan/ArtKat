@@ -270,9 +270,9 @@
 
 .webtoon-detail-image {
     object-fit: contain;
-    max-height: 100vh;
+    max-height: 100vh !important;
     width: auto;
-    max-width: 100%;
+    max-width: 100% !important;
 }
 
 .protected-image,
@@ -399,9 +399,21 @@ img {
 /* === Responsive Design === */
 @media (max-width: 768px) {
     .hero {
-        height: 100vh;
-        max-height: 100vw;
-        min-height: 100vw;
+        height: 100vh; /* Full viewport height */
+        min-height: -webkit-fill-available; /* For mobile browsers */
+        padding: 0;
+        margin: 0;
+    }
+
+    .hero__background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        filter: blur(4px) brightness(0.4);
+        transform: scale(1.05); /* Slight zoom to prevent edges on mobile */
+        background-attachment: scroll; /* Prevent parallax on mobile */
     }
 
     .hero__title {
@@ -412,17 +424,16 @@ img {
         font-size: 1.2rem;
     }
     
-    .hero__background {
-        filter: blur(4px) brightness(0.4);
-        transform: scale(1.05);
-    }
-    
     .detail-image {
         max-height: 40vh;
     }
     
     .detail-image img {
-        max-height: 70vh;
+        max-height: 40vh;
+    }
+
+    .lineart-full-image {
+        max-height: 70vh !important;
     }
     
     .detail-info {
@@ -605,4 +616,14 @@ img {
   .detail-description-container {
     max-height: 150px;
   }
+}
+
+#portfolio {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.contact-page {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }

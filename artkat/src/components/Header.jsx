@@ -1,57 +1,103 @@
-/**
- * Author: carlodandan (https://github.com/carlodandan)
- */
-import React, { useState } from 'react';
+// components/Header.jsx
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import './Header.css';
 
 const Header = () => {
+  const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.classList.remove('menu-open');
     }
-    setIsMenuOpen(false); // Close menu after clicking
-  };
+
+    // Cleanup function
+    return () => {
+      document.body.classList.remove('menu-open');
+    };
+  }, [isMenuOpen]);
+
+  // Close menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  const navLinks = [
+    { path: '/', label: 'Home' },
+    { path: '/profile', label: 'Profile' },
+    { path: '/artwork', label: 'Artwork' },
+    { path: '/contact', label: 'Contact' }
+  ];
+
   return (
     <header className="header">
       <nav className="nav container">
-        <a href="#home" className="nav__logo" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}>
+        <Link to="/" className="nav__logo" onClick={closeMenu}>
           Art<span>Kat</span>
-        </a>
+        </Link>
         
-        {/* Desktop Navigation */}
-        <ul className="nav__list">
-          <li><a href="#home" className="nav__link" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}>Home</a></li>
-          <li><a href="#profile" className="nav__link" onClick={(e) => { e.preventDefault(); scrollToSection('profile'); }}>Profile</a></li>
-          <li><a href="#portfolio" className="nav__link" onClick={(e) => { e.preventDefault(); scrollToSection('portfolio'); }}>Portfolio</a></li>
-          <li><a href="#contact" className="nav__link" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}>Contact</a></li>
-        </ul>
+        {/* Desktop Menu */}
+        <div className="nav__menu">
+          <ul className="nav__list">
+            {navLinks.map((link) => (
+              <li key={link.path} className="nav__item">
+                <Link 
+                  to={link.path} 
+                  className={`nav__link ${location.pathname === link.path ? 'active' : ''}`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-        {/* Mobile Burger Menu */}
+        {/* Mobile Burger Button */}
         <button 
-          className={`nav__toggle ${isMenuOpen ? 'active' : ''}`}
+          className={`burger-menu ${isMenuOpen ? 'active' : ''}`}
           onClick={toggleMenu}
-          aria-label="Toggle navigation menu"
+          aria-label="Toggle menu"
+          aria-expanded={isMenuOpen}
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span className="burger-bar"></span>
+          <span className="burger-bar"></span>
+          <span className="burger-bar"></span>
         </button>
 
-        {/* Mobile Dropdown Menu */}
-        <div className={`nav__dropdown ${isMenuOpen ? 'active' : ''}`}>
-          <ul className="nav__dropdown-list">
-            <li><a href="#home" className="nav__dropdown-link" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}>Home</a></li>
-            <li><a href="#profile" className="nav__dropdown-link" onClick={(e) => { e.preventDefault(); scrollToSection('profile'); }}>Profile</a></li>
-            <li><a href="#portfolio" className="nav__dropdown-link" onClick={(e) => { e.preventDefault(); scrollToSection('portfolio'); }}>Portfolio</a></li>
-            <li><a href="#contact" className="nav__dropdown-link" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}>Contact</a></li>
-          </ul>
+        {/* Mobile Side Menu */}
+        <div className={`mobile-menu ${isMenuOpen ? 'active' : ''}`}>
+          <div className="mobile-menu__overlay" onClick={closeMenu}></div>
+          <div className="mobile-menu__content">
+            <div className="mobile-menu__header">
+              <span className="mobile-menu__title">Menu</span>
+            </div>
+            
+            <ul className="mobile-menu__list">
+              {navLinks.map((link) => (
+                <li key={link.path} className="mobile-menu__item">
+                  <Link 
+                    to={link.path} 
+                    className={`mobile-menu__link ${location.pathname === link.path ? 'active' : ''}`}
+                    onClick={closeMenu}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </nav>
     </header>

@@ -92,3 +92,21 @@
   }
 }
 
+/* Add to your existing styles/base.css or styles/sections.css */
+
+/* Adjust main content for fixed header */
+main {
+  min-height: calc(100vh - 120px);
+}
+
+/* Ensure proper spacing on mobile */
+@media (max-width: 768px) {
+  main {
+    margin-top: 70px; /* Height of fixed header */
+  }
+}
+
+/* Smooth transitions for page changes */
+.App {
+  transition: opacity 0.3s ease;
+}

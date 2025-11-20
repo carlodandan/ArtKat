@@ -1,11 +1,4 @@
-/* Image optimization and performance */
-.protected-image,
-.portfolio-item__img,
-.detail-image img {
-    content-visibility: auto;
-    contain-intrinsic-size: 300px;
-    will-change: transform;
-}
+
 /**
  * Author: carlodandan (https://github.com/carlodandan)
  */
