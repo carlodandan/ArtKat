@@ -12,7 +12,7 @@
 
 .btn--primary {
     background-color: var(--color-accent);
-    color: var(--color-black);
+    color: var(--color-white);
 }
 
 .btn--primary:hover {
@@ -46,7 +46,7 @@
     font-size: 1.5rem;
     font-weight: 700;
     text-decoration: none;
-    color: var(--color-black);
+    color: var(--color-white);
 }
 
 .nav__logo span {
@@ -91,7 +91,7 @@
 .filter-btn.active,
 .filter-btn:hover {
     background-color: var(--color-accent);
-    color: var(--color-black);
+    color: var(--color-white);
     border-color: var(--color-accent);
 }
 
@@ -177,7 +177,7 @@
     object-fit: cover;
     border: 2px solid var(--color-accent);
     padding: 2px;
-    background-color: var(--color-white);
+    background-color: var(--color-black);
     transition: all 0.3s ease;
 }
 
@@ -218,7 +218,7 @@
     top: 1rem;
     right: 1rem;
     background: var(--color-accent);
-    color: var(--color-black);
+    color: var(--color-white);
     border: none;
     width: 40px;
     height: 40px;
@@ -287,7 +287,7 @@
 
 .social-link:hover {
     background-color: var(--color-accent);
-    color: var(--color-black);
+    color: var(--color-white);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(98, 255, 77, 0.3);
 }

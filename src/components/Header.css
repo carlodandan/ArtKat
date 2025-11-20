@@ -19,7 +19,7 @@
 .nav__logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: var(--color-black);
+  color: var(--color-white);
   text-decoration: none;
   z-index: 1001;
 }
@@ -74,7 +74,7 @@
 .burger-bar {
   width: 25px;
   height: 3px;
-  background: var(--color-black);
+  background: var(--color-white);
   margin: 3px 0;
   transition: 0.3s;
   transform-origin: center;
@@ -125,7 +125,7 @@
   width: 80%;
   max-width: 300px;
   height: 100%;
-  background: var(--color-white);
+  background: var(--color-black);
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
   transform: translateX(100%);
   transition: transform 0.3s ease;
@@ -143,13 +143,13 @@
   align-items: center;
   padding: 1.5rem;
   border-bottom: 1px solid #eee;
-  background: var(--color-white);
+  background: var(--color-black);
 }
 
 .mobile-menu__title {
   font-size: 1.25rem;
   font-weight: bold;
-  color: var(--color-black);
+  color: var(--color-white);
 }
 
 .mobile-menu__list {
@@ -168,7 +168,7 @@
   display: block;
   padding: 1.5rem;
   text-decoration: none;
-  color: var(--color-black);
+  color: var(--color-white);
   font-weight: 500;
   transition: all 0.3s ease;
   border-left: 4px solid transparent;
@@ -180,7 +180,7 @@
 }
 
 .mobile-menu__link.active {
-  background: var(--color-white);
+  background: var(--color-black);
   color: var(--color-accent);
   border-left-color: var(--color-accent);
 }
