@@ -30,6 +30,10 @@
   animation: flipIn 0.7s ease-out forwards;
 }
 
+.detail-card {
+    animation: flipIn 0.7s ease-out forwards;
+}
+
 @keyframes slideUp {
   from {
     opacity: 0;
