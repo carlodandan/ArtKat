@@ -1,13 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 /**
  * Author: carlodandan (https://github.com/carlodandan)
  */
 const Hero = () => {
-  const scrollToPortfolio = () => {
-    const element = document.getElementById('portfolio');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const navigate = useNavigate();
+
+  const goToArtwork = () => {
+    navigate('/artwork');
   };
 
   return (
@@ -22,7 +22,7 @@ const Hero = () => {
         <div className="hero__content container">
           <h1 className="hero__title">ArtKat</h1>
           <p className="hero__tagline">Digital Artist & Illustrator</p>
-          <button className="btn btn--primary" onClick={scrollToPortfolio}>
+          <button className="btn btn--primary" onClick={goToArtwork}>
             View My Work
           </button>
         </div>
