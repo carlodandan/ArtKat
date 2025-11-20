@@ -1,4 +1,3 @@
-// components/Artwork.jsx
 import React, { Suspense } from 'react';
 const Portfolio = React.lazy(() => import('./Portfolio'));
 
