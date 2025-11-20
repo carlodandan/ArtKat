@@ -4,6 +4,7 @@ import personalData from '../data/personal.json';
 import othersData from '../data/others.json';
 
 import './Portfolio.css';
+import './Animation.css';
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all');
