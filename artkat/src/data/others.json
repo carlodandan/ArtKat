@@ -1,13 +1,11 @@
 {
   "lineart": {
     "category": "lineart",
-    "title": "Lineart Samples",
+    "title": "Art Process",
     "images": [
-      "/others/lineart/elf.webp",
-      "/others/lineart/ladymech.webp",
-      "/others/lineart/Lineart.webp",
-      "/others/lineart/Lineart2.webp",
-      "/others/lineart/LineartAxe.webp"
+      "elf.webp",
+      "axe.webp",
+      "gun.webp"
     ]
   },
   "character_design": {
@@ -16,15 +14,15 @@
     "items": [
       {
         "title": "Danny",
-        "image": "/others/character_design_sheet/Danny.webp"
+        "image": "/img/others/character_design_sheet/Danny.webp"
       },
       {
         "title": "Lovely",
-        "image": "/others/character_design_sheet/Lovely.webp"
+        "image": "/img/others/character_design_sheet/Lovely.webp"
       },
       {
         "title": "Miguel",
-        "image": "/others/character_design_sheet/Miguel.webp"
+        "image": "/img/others/character_design_sheet/Miguel.webp"
       }
     ]
   }

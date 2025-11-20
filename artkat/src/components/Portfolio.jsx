@@ -2,7 +2,8 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import webtoonData from '../data/webtoon.json';
 import personalData from '../data/personal.json';
 import othersData from '../data/others.json';
-import ProtectedImage from './ProtectedImage';
+
+import './Portfolio.css';
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -66,10 +67,15 @@ const Portfolio = () => {
     document.body.style.overflow = 'hidden';
   }, []);
 
-  const handleLineartClick = useCallback((imageSrc) => {
+  const handleLineartClick = useCallback((imageSrc, type = 'lineart') => {
+    // Generate full image path from crop image path
+    const fileName = imageSrc.split('/').pop();
+    const baseName = fileName.replace(/\.[^/.]+$/, ""); // Remove file extension
+    const fullImagePath = `/img/others/process/full/${baseName}.webp`;
+    
     setSelectedItem({
-      title: "Lineart Sample",
-      image: imageSrc,
+      title: `${type.charAt(0).toUpperCase() + type.slice(1)} Sample`,
+      image: fullImagePath,
       category: 'lineart'
     });
     setShowDetail(true);
@@ -96,7 +102,7 @@ const Portfolio = () => {
           onClick={() => handleItemClick(item)}
         >
           <div className="webtoon-link">
-            <ProtectedImage 
+            <img 
               src={item.poster} 
               alt={item.title} 
               className="portfolio-item__img webtoon-thumbnail" 
@@ -134,7 +140,7 @@ const Portfolio = () => {
         data-category={categories[0]}
         onClick={() => handleItemClick(item)}
       >
-        <ProtectedImage 
+        <img 
           src={item.image} 
           alt={item.title} 
           className="portfolio-item__img" 
@@ -150,6 +156,19 @@ const Portfolio = () => {
     );
   }, [handleItemClick]);
 
+  // Function to generate overlay images for lineart items
+  const generateOverlayImages = (baseImageSrc) => {
+    // Extract the base name from the image path and remove the file extension
+    const fileName = baseImageSrc.split('/').pop();
+    const baseName = fileName.replace(/\.[^/.]+$/, ""); // Remove file extension
+    
+    return {
+      lineart: `/img/others/process/crop/${baseName}_lineart.webp`,
+      flat: `/img/others/process/crop/${baseName}_flat.webp`,
+      rendered: `/img/others/process/crop/${baseName}_rendered.webp`
+    };
+  };
+
   // Memoize others tabs renderer
   const renderOthersTabs = useMemo(() => {
     if (activeFilter !== 'others') return null;
@@ -162,7 +181,7 @@ const Portfolio = () => {
             className={`others-tab ${activeOthersTab === 'lineart' ? 'active' : ''}`}
             onClick={() => setActiveOthersTab('lineart')}
           >
-            Lineart Samples
+            Art Process
           </button>
           <button 
             className={`others-tab ${activeOthersTab === 'character_design' ? 'active' : ''}`}
@@ -176,19 +195,66 @@ const Portfolio = () => {
         <div className="others-tab-content">
           {activeOthersTab === 'lineart' && (
             <div className="lineart-grid">
-              {othersData.lineart.images.map((image, index) => (
-                <div 
-                  key={index} 
-                  className="lineart-item"
-                  onClick={() => handleLineartClick(image)}
-                >
-                  <ProtectedImage 
-                    src={image} 
-                    alt={`Lineart Sample ${index + 1}`}
-                    className="lineart-image" 
-                  />
-                </div>
-              ))}
+              {othersData.lineart.images.map((image, index) => {
+                const overlayImages = generateOverlayImages(image);
+                
+                return (
+                  <div key={index} className="lineart-artwork">
+                    <div className="art-process-grid">
+                      {/* Lineart */}
+                      <div 
+                        className="art-process-column"
+                        onClick={() => handleLineartClick(overlayImages.lineart, 'lineart')}
+                      >
+                        <div className="art-process-image-container">
+                          <img 
+                            src={overlayImages.lineart} 
+                            alt="Lineart version"
+                            className="art-process-image"
+                          />
+                          <div className="art-process-hover-overlay">
+                            <span className="art-process-hover-text">Lineart</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Flat Colors */}
+                      <div 
+                        className="art-process-column"
+                        onClick={() => handleLineartClick(overlayImages.flat, 'flat')}
+                      >
+                        <div className="art-process-image-container">
+                          <img 
+                            src={overlayImages.flat} 
+                            alt="Flat color version"
+                            className="art-process-image"
+                          />
+                          <div className="art-process-hover-overlay">
+                            <span className="art-process-hover-text">Flat Colors</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Rendered */}
+                      <div 
+                        className="art-process-column"
+                        onClick={() => handleLineartClick(overlayImages.rendered, 'rendered')}
+                      >
+                        <div className="art-process-image-container">
+                          <img 
+                            src={overlayImages.rendered} 
+                            alt="Rendered version"
+                            className="art-process-image"
+                          />
+                          <div className="art-process-hover-overlay">
+                            <span className="art-process-hover-text">Final Render</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           )}
 
@@ -204,7 +270,7 @@ const Portfolio = () => {
                   className="portfolio-item character-design"
                   onClick={() => handleItemClick({...item, category: 'character_design'})}
                 >
-                  <ProtectedImage 
+                  <img 
                     src={item.image} 
                     alt={item.title} 
                     className="portfolio-item__img" 

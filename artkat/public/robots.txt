@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
+Disallow: /src/
 
 Sitemap: https://artkat.pages.dev/sitemap.xml

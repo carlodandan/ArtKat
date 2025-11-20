@@ -349,61 +349,10 @@ img {
     min-height: 400px;
 }
 
-.lineart-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.5rem;
-}
-
-.lineart-image {
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-light-gray);
-    border-radius: 10px;
-}
-
 .character-design-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
-}
-
-.lineart-item,
-.portfolio-item.character-design {
-    border-color: #3A3A3A;
-}
-
-.lineart-item:hover,
-.portfolio-item.character-design:hover {
-    border-color: #00dc64;
-}
-
-/* === Lineart Detail View === */
-.lineart-detail {
-    display: block !important;
-    background: #1e1e1e !important;
-    grid-template-columns: 1fr;
-    max-width: 95vw;
-    padding: 0;
-}
-
-.lineart-detail .detail-image {
-    max-height: none !important;
-    height: auto;
-    padding: 0;
-    background: transparent;
-}
-
-.lineart-full-image {
-    max-width: 95vw;
-    max-height: 90vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-}
-
-.lineart-detail .detail-info {
-    display: none;
 }
 
 /* === Webtoon Genres === */
@@ -508,29 +457,8 @@ img {
         max-width: 250px;
     }
     
-    .lineart-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 1rem;
-    }
-    
     .character-design-grid {
         grid-template-columns: 1fr;
-    }
-    
-    .lineart-item {
-        max-width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-    }
-    
-    .lineart-full-image {
-        max-width: 98vw;
-        max-height: 95vh;
-    }
-    
-    .lineart-detail {
-        max-width: 98vw;
-        margin: 0;
     }
     
     .detail-actions .btn--primary {
