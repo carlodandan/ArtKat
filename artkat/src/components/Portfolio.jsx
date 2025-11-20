@@ -3,6 +3,8 @@ import webtoonData from '../data/webtoon.json';
 import personalData from '../data/personal.json';
 import othersData from '../data/others.json';
 
+import './Portfolio.css';
+
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [displayedItems, setDisplayedItems] = useState([]);

@@ -14,15 +14,15 @@
     "items": [
       {
         "title": "Danny",
-        "image": "/src/assets/others/character_design_sheet/Danny.webp"
+        "image": "/img/others/character_design_sheet/Danny.webp"
       },
       {
         "title": "Lovely",
-        "image": "/src/assets/others/character_design_sheet/Lovely.webp"
+        "image": "/img/others/character_design_sheet/Lovely.webp"
       },
       {
         "title": "Miguel",
-        "image": "/src/assets/others/character_design_sheet/Miguel.webp"
+        "image": "/img/others/character_design_sheet/Miguel.webp"
       }
     ]
   }

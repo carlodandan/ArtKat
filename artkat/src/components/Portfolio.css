@@ -1,0 +1,336 @@
+/* === Lineart Section Styles === */
+
+/* Lineart Grid Layout */
+.lineart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.lineart-item {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid #3A3A3A;
+    cursor: pointer;
+    background: var(--color-dark-gray);
+}
+
+.lineart-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border-color: var(--color-accent);
+}
+
+/* Lineart Preview Container */
+.lineart-preview-container {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+}
+
+.crop-image-container {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.crop-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.lineart-item:hover .crop-image {
+    transform: scale(1.05);
+}
+
+/* Lineart Hover Overlay */
+.lineart-hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lineart-item:hover .lineart-hover-overlay {
+    opacity: 1;
+}
+
+.hover-labels {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+
+.hover-label {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background: rgba(77, 255, 92, 0.2);
+    border: 1px solid var(--color-accent);
+}
+
+.click-hint {
+    color: var(--color-accent);
+    font-size: 12px;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    border: 1px solid var(--color-accent);
+}
+
+/* Art Process Grid */
+.art-process-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: var(--color-dark-gray);
+    border-radius: 10px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.art-process-column {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.art-process-column:hover {
+    transform: translateY(-5px);
+}
+
+.art-process-image-container {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #3A3A3A;
+    transition: border-color 0.3s ease;
+}
+
+.art-process-column:hover .art-process-image-container {
+    border-color: var(--color-accent);
+}
+
+.art-process-column .art-process-image-container {
+    height: 100%;
+}
+
+.art-process-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Art Process Column Borders */
+.art-process-column:first-child .art-process-image-container {
+    border-right: none;
+    border-radius: 0.75rem 0 0 0.75rem;
+}
+
+.art-process-column:nth-child(2) .art-process-image-container {
+    border-right: none;
+    border-radius: 0;
+}
+
+.art-process-column:last-child .art-process-image-container {
+    border-radius: 0 0.75rem 0.75rem 0;
+}
+
+/* Art Process Hover Overlay */
+.art-process-hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.art-process-column:hover .art-process-hover-overlay {
+    opacity: 1;
+}
+
+.art-process-hover-text {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+/* Lineart Crops Layout */
+.lineart-crops {
+    display: flex;
+    height: 100%;
+}
+
+.overlay-images {
+    display: flex;
+    padding: 15px;
+    width: 100%;
+    justify-content: center;
+}
+
+.overlay-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.overlay-image {
+    width: 80px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.overlay-image:hover {
+    border-color: #fff;
+}
+
+.overlay-label {
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Lineart Detail View */
+.lineart-detail {
+    display: block !important;
+    background: #1e1e1e !important;
+    grid-template-columns: 1fr;
+    max-width: 95vw;
+    padding: 0;
+}
+
+.lineart-detail .detail-image {
+    max-height: none !important;
+    height: auto;
+    padding: 0;
+    background: transparent;
+}
+
+.lineart-full-image {
+    max-width: 95vw !important;
+    max-height: 90vh !important;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.lineart-detail .detail-info {
+    display: none;
+}
+
+/* Lineart Overlay Container */
+.lineart-overlay-container {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.lineart-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Lineart Image Styles */
+.lineart-image {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-light-gray);
+    border-radius: 10px;
+}
+
+/* Responsive Design for Lineart Sections */
+@media (max-width: 768px) {
+    .lineart-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .lineart-preview-container {
+        height: 150px;
+    }
+    
+    .art-process-image {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+    
+    .hover-labels {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .hover-label {
+        font-size: 12px;
+        padding: 0.3rem 0.8rem;
+    }
+    
+    .click-hint {
+        font-size: 11px;
+    }
+    
+    .overlay-images {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .overlay-image {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .overlay-label {
+        font-size: 10px;
+    }
+    
+    .art-process-hover-text {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.8rem;
+    }
+    
+    .lineart-full-image {
+        max-width: 98vw;
+        max-height: 95vh;
+    }
+    
+    .lineart-detail {
+        max-width: 98vw;
+        margin: 0;
+    }
+}
