@@ -7,7 +7,6 @@ import Footer from './components/Footer';
 const Home = React.lazy(() => import('./components/Home'));
 const Profile = React.lazy(() => import('./components/Profile'));
 const Artwork = React.lazy(() => import('./components/Artwork'));
-const Contact = React.lazy(() => import('./components/Contact'));
 
 // Loading fallback component
 const LoadingFallback = () => (
@@ -34,7 +33,6 @@ function App() {
             <Route path="/artwork/others" element={<Artwork />} />
             <Route path="/artwork/others/art-process" element={<Artwork />} />
             <Route path="/artwork/others/character-design" element={<Artwork />} />
-            <Route path="/contact" element={<Contact />} />
             {/* Fallback route */}
             <Route path="*" element={<Home />} />
           </Routes>
