@@ -98,14 +98,14 @@
   "screenshots": [
     {
       "src": "https://artkat.pages.dev/landingpage.webp",
-      "sizes": "1584x723",
+      "sizes": "1583x723",
       "type": "image/webp",
       "form_factor": "wide",
       "label": "ArtKat Portfolio Homepage - Digital Illustrator & Character Artist"
     },
     {
       "src": "https://artkat.pages.dev/landingpagemobile.webp",
-      "sizes": "305x673",
+      "sizes": "1080x2049",
       "type": "image/webp", 
       "form_factor": "narrow",
       "label": "ArtKat Portfolio - Mobile View"
