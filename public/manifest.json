@@ -104,8 +104,8 @@
       "label": "ArtKat Portfolio Homepage - Digital Illustrator & Character Artist"
     },
     {
-      "src": "https://artkat.pages.dev/landingpage.webp",
-      "sizes": "1584x723",
+      "src": "https://artkat.pages.dev/landingpagemobile.webp",
+      "sizes": "305x673",
       "type": "image/webp", 
       "form_factor": "narrow",
       "label": "ArtKat Portfolio - Mobile View"
