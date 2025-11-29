@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import webtoonData from '../data/webtoon.json';
 import personalData from '../data/personal.json';
 import othersData from '../data/others.json';
+import videoData from '../data/video.json';
+import ArtPlayer from 'artplayer';
 
 import './Portfolio.css';
 import './Animation.css';
@@ -35,12 +37,15 @@ const Portfolio = () => {
       setActiveFilter('personal');
     } else if (path === '/artwork/webtoon') {
       setActiveFilter('webtoon');
-    } else if (path === '/artwork/others' || path === '/artwork/others/art-process') {
+    } else if (path === '/artwork/others' || path === '/artwork/others/visual-breakdown') {
       setActiveFilter('others');
       setActiveOthersTab('lineart');
     } else if (path === '/artwork/others/character-design') {
       setActiveFilter('others');
       setActiveOthersTab('character_design');
+    } else if (path === '/artwork/others/art-process') {
+      setActiveFilter('others');
+      setActiveOthersTab('art_process');
     }
   }, [location.pathname]);
 
@@ -78,7 +83,7 @@ const Portfolio = () => {
     if (filter === 'all') {
       navigate('/artwork/all');
     } else if (filter === 'others') {
-      navigate('/artwork/others/art-process');
+      navigate('/artwork/others/visual-breakdown');
     } else {
       navigate(`/artwork/${filter}`);
     }
@@ -89,9 +94,11 @@ const Portfolio = () => {
     setActiveOthersTab(tab);
     
     if (tab === 'lineart') {
-      navigate('/artwork/others/art-process');
+      navigate('/artwork/others/visual-breakdown');
     } else if (tab === 'character_design') {
       navigate('/artwork/others/character-design');
+    } else if (tab === 'art_process') {
+      navigate('/artwork/others/art-process');
     }
   }, [navigate]);
 
@@ -217,27 +224,76 @@ const Portfolio = () => {
     };
   };
 
+  // Add video player initialization effect
+  useEffect(() => {
+    if (activeOthersTab === 'art_process') {
+      // Initialize ArtPlayer instances when tab is active
+      const artPlayers = [];
+      
+      videoData.forEach((video, index) => {
+        const art = new ArtPlayer({
+          container: `#art-player-${video.id}`,
+          url: video.video,
+          poster: video.thumbnail,
+          volume: 0.5,
+          autoplay: false,
+          autoSize: false,
+          autoMini: true,
+          fullscreen: true,
+          miniProgressBar: true,
+          mutex: true,
+          playsInline: true,
+          autoPlayback: true,
+          theme: '#4dff5c',
+        });
+        
+        setTimeout(() => {
+          if (art && art.aspectRatio) {
+            art.aspectRatio = video.aspectRatio || '9:16';
+          }
+        }, 100);
+        
+        artPlayers.push(art);
+      });
+      
+      // Cleanup function
+      return () => {
+        artPlayers.forEach(art => {
+          if (art && art.destroy) {
+            art.destroy();
+          }
+        });
+      };
+    }
+  }, [activeOthersTab]);
+
   // Memoize others tabs renderer
   const renderOthersTabs = useMemo(() => {
     if (activeFilter !== 'others') return null;
 
     return (
-      <div className="others-container">
-        {/* Tab Navigation */}
-        <div className="others-tabs">
-          <button 
-            className={`others-tab ${activeOthersTab === 'lineart' ? 'active' : ''}`}
-            onClick={() => handleOthersTabChange('lineart')}
-          >
-            Art Process
-          </button>
-          <button 
-            className={`others-tab ${activeOthersTab === 'character_design' ? 'active' : ''}`}
-            onClick={() => handleOthersTabChange('character_design')}
-          >
-            Character Design
-          </button>
-        </div>
+        <div className="others-container">
+          {/* Tab Navigation - Updated with new tab */}
+          <div className="others-tabs">
+            <button 
+              className={`others-tab ${activeOthersTab === 'lineart' ? 'active' : ''}`}
+              onClick={() => handleOthersTabChange('lineart')}
+            >
+              Visual Breakdown
+            </button>
+            <button 
+              className={`others-tab ${activeOthersTab === 'character_design' ? 'active' : ''}`}
+              onClick={() => handleOthersTabChange('character_design')}
+            >
+              Character Design
+            </button>
+            <button 
+              className={`others-tab ${activeOthersTab === 'art_process' ? 'active' : ''}`}
+              onClick={() => handleOthersTabChange('art_process')}
+            >
+              Art Process
+            </button>
+          </div>
 
         {/* Tab Content */}
         <div className="others-tab-content">
@@ -248,54 +304,54 @@ const Portfolio = () => {
                 
                 return (
                   <div key={index} className="lineart-artwork">
-                    <div className="art-process-grid">
+                    <div className="visual-breakdown-grid">
                       {/* Lineart */}
                       <div 
-                        className="art-process-column"
+                        className="visual-breakdown-column"
                         onClick={() => handleLineartClick(overlayImages.lineart, 'lineart')}
                       >
-                        <div className="art-process-image-container">
+                        <div className="visual-breakdown-image-container">
                           <img 
                             src={overlayImages.lineart} 
                             alt="Lineart version"
-                            className="art-process-image"
+                            className="visual-breakdown-image"
                           />
-                          <div className="art-process-hover-overlay">
-                            <span className="art-process-hover-text">Lineart</span>
+                          <div className="visual-breakdown-hover-overlay">
+                            <span className="visual-breakdown-hover-text">Lineart</span>
                           </div>
                         </div>
                       </div>
                       
                       {/* Flat Colors */}
                       <div 
-                        className="art-process-column"
+                        className="visual-breakdown-column"
                         onClick={() => handleLineartClick(overlayImages.flat, 'flat')}
                       >
-                        <div className="art-process-image-container">
+                        <div className="visual-breakdown-image-container">
                           <img 
                             src={overlayImages.flat} 
                             alt="Flat color version"
-                            className="art-process-image"
+                            className="visual-breakdown-image"
                           />
-                          <div className="art-process-hover-overlay">
-                            <span className="art-process-hover-text">Flat Colors</span>
+                          <div className="visual-breakdown-hover-overlay">
+                            <span className="visual-breakdown-hover-text">Flat Colors</span>
                           </div>
                         </div>
                       </div>
                       
                       {/* Rendered */}
                       <div 
-                        className="art-process-column"
+                        className="visual-breakdown-column"
                         onClick={() => handleLineartClick(overlayImages.rendered, 'rendered')}
                       >
-                        <div className="art-process-image-container">
+                        <div className="visual-breakdown-image-container">
                           <img 
                             src={overlayImages.rendered} 
                             alt="Rendered version"
-                            className="art-process-image"
+                            className="visual-breakdown-image"
                           />
-                          <div className="art-process-hover-overlay">
-                            <span className="art-process-hover-text">Final Render</span>
+                          <div className="visual-breakdown-hover-overlay">
+                            <span className="visual-breakdown-hover-text">Final Render</span>
                           </div>
                         </div>
                       </div>
@@ -325,6 +381,26 @@ const Portfolio = () => {
                   />
                 </div>
               ))}
+            </div>
+          )}
+
+          {activeOthersTab === 'art_process' && (
+            <div className="art-process-grid">
+              <div className="category-header">
+                <em className="artProcess">Timelapse and speedpaint videos showing my art process.</em>
+              </div>
+              <div className="video-grid">
+                {videoData.map((video) => (
+                  <div key={video.id} className="video-item">
+                    <div className="video-player-container">
+                      <div 
+                        id={`art-player-${video.id}`}
+                        className="art-player-wrapper"
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>

@@ -93,8 +93,8 @@
     border: 1px solid var(--color-accent);
 }
 
-/* Art Process Grid */
-.art-process-grid {
+/* Visual Breakdown Grid */
+.visual-breakdown-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     background: var(--color-dark-gray);
@@ -103,17 +103,17 @@
     transition: all 0.3s ease;
 }
 
-.art-process-column {
+.visual-breakdown-column {
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
 }
 
-.art-process-column:hover {
+.visual-breakdown-column:hover {
     transform: translateY(-10px);
 }
 
-.art-process-image-container {
+.visual-breakdown-image-container {
     cursor: pointer;
     position: relative;
     border-radius: 8px;
@@ -123,48 +123,48 @@
     animation: scaleIn 0.8s ease-out 0.3s forwards;
 }
 
-.art-process-image-container:hover {
+.visual-breakdown-image-container:hover {
     border-color: var(--color-accent);
     z-index: 10;
     transform: translateY(-5px);
 }
 
-.art-process-column:hover .art-process-image {
+.visual-breakdown-column:hover .visual-breakdown-image {
     transform: scale(1.02);
 }
 
-.art-process-column:hover .art-process-image-container {
+.visual-breakdown-column:hover .visual-breakdown-image-container {
     border-color: var(--color-accent);
 }
 
-.art-process-column .art-process-image-container {
+.visual-breakdown-column .visual-breakdown-image-container {
     height: 100%;
 }
 
-.art-process-image {
+.visual-breakdown-image {
     width: 100%;
     height: 100%;
     display: block;
     transition: transform 0.3s ease;
 }
 
-/* Art Process Column Borders */
-.art-process-column:first-child .art-process-image-container {
+/* Visual Breakdown Column Borders */
+.visual-breakdown-column:first-child .visual-breakdown-image-container {
     border-right: none;
     border-radius: 0.75rem 0 0 0.75rem;
 }
 
-.art-process-column:nth-child(2) .art-process-image-container {
+.visual-breakdown-column:nth-child(2) .visual-breakdown-image-container {
     border-right: none;
     border-radius: 0;
 }
 
-.art-process-column:last-child .art-process-image-container {
+.visual-breakdown-column:last-child .visual-breakdown-image-container {
     border-radius: 0 0.75rem 0.75rem 0;
 }
 
-/* Art Process Hover Overlay */
-.art-process-hover-overlay {
+/* Visual Breakdown Hover Overlay */
+.visual-breakdown-hover-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -178,12 +178,12 @@
     transition: all 0.3s ease;
 }
 
-.art-process-column:hover .art-process-hover-overlay {
+.visual-breakdown-column:hover .visual-breakdown-hover-overlay {
     opacity: 1;
     background: rgba(0, 0, 0, 0.5);
 }
 
-.art-process-hover-text {
+.visual-breakdown-hover-text {
     color: white;
     font-size: 1.1rem;
     font-weight: 600;
@@ -299,7 +299,7 @@
         height: 150px;
     }
     
-    .art-process-image {
+    .visual-breakdown-image {
         width: 100%;
         height: 100%;
         display: block;
@@ -334,7 +334,7 @@
         font-size: 10px;
     }
     
-    .art-process-hover-text {
+    .visual-breakdown-hover-text {
         font-size: 0.9rem;
         padding: 0.3rem 0.8rem;
     }
@@ -348,4 +348,341 @@
         max-width: 98vw;
         margin: 0;
     }
+}
+
+/* === Art Process Section Styles === */
+
+.art-process-grid {
+  width: 100%;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+  justify-items: center;
+}
+
+.video-item {
+  background: var(--color-dark-gray);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #3A3A3A;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Use full width of grid cell */
+}
+
+.video-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border-color: var(--color-accent);
+}
+
+.video-player-container {
+  position: relative;
+  width: 100%;
+  background: #000;
+  flex-shrink: 0;
+}
+
+/* Controls */
+.art-controls {
+    display: flex !important;
+    transform: scale(0.9) !important;
+    justify-content: center !important;
+}
+
+/* Portrait video player container - adjusted for better controls */
+.art-player-wrapper {
+  width: 100%;
+  height: 0;
+  padding-bottom: 177.78%;
+  position: relative;
+}
+
+.art-video {
+    width: 100% !important;
+}
+
+.art-video-player {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.art-player-wrapper .art-video-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Ensure video and controls scale properly */
+.art-video-player .art-video {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+/* Improved controls for smaller portrait videos */
+.art-video-player .art-controls {
+  padding: 0 8px 8px;
+  min-height: 40px;
+}
+
+/* Adjust control elements for smaller size */
+.art-video-player .art-controls .art-progress {
+  height: 3px;
+  margin-bottom: 5px;
+}
+
+.art-video-player .art-controls .art-control {
+  padding: 5px;
+  margin: 0 2px;
+}
+
+.art-video-player .art-controls .art-volume {
+  min-width: 60px;
+}
+
+/* Ensure controls are visible and functional */
+.art-video-player .art-controls .art-controls-left,
+.art-video-player .art-controls .art-controls-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.art-video-player .art-controls .art-controls-center {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Adjust settings menu for smaller player */
+.art-video-player .art-setting {
+  max-width: 200px;
+}
+
+.video-info {
+  padding: 1.2rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-title {
+  color: var(--color-white);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.video-description {
+  color: var(--color-light-gray);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* ArtPlayer Customization for Portrait Videos */
+.art-video-player {
+  --art-theme: #4dff5c !important;
+  --art-control-scale: 0.9; /* Slightly smaller controls */
+}
+
+/* Fullscreen adjustments - controls should work normally in fullscreen */
+.art-video-player.art-fullscreen {
+  background: #000;
+}
+
+.art-video-player.art-fullscreen .art-video {
+  object-fit: contain;
+}
+
+.art-video-player.art-fullscreen .art-controls {
+  padding: 0 15px 10px;
+  min-height: 50px;
+}
+
+/* Responsive Design for Art Process */
+@media (max-width: 1200px) {
+  .video-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .video-item {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .video-item {
+    max-width: 280px;
+  }
+  
+  .art-player-wrapper {
+    padding-bottom: 177.78%;
+  }
+  
+  .video-info {
+    padding: 1rem;
+  }
+  
+  .video-title {
+    font-size: 1rem;
+  }
+  
+  .video-description {
+    font-size: 0.8rem;
+  }
+  
+  /* Adjust controls for mobile */
+  .art-video-player .art-controls {
+    padding: 0 5px 5px;
+    min-height: 35px;
+  }
+  
+  .art-video-player .art-controls .art-control {
+    padding: 4px;
+    margin: 0 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .video-item {
+    max-width: 100%;
+    margin: 0;
+  }
+  
+  .art-player-wrapper {
+    padding-bottom: 177.78%;
+  }
+  
+  /* Ensure controls are still accessible on very small screens */
+  .art-video-player .art-controls .art-volume {
+    min-width: 50px;
+  }
+  
+  .art-video-player .art-controls .art-time {
+    font-size: 11px;
+  }
+}
+
+/* Additional helper for very small screens */
+@media (max-width: 360px) {
+  .video-grid {
+    max-width: 280px;
+  }
+  
+  .art-video-player .art-controls {
+    transform: scale(0.85);
+    transform-origin: bottom;
+  }
+}
+
+/* Adjust for different portrait aspect ratios if needed */
+.art-player-wrapper.portrait-2-3 {
+  padding-bottom: 150%; /* 2:3 aspect ratio */
+}
+
+.art-player-wrapper.portrait-3-4 {
+  padding-bottom: 133.33%; /* 3:4 aspect ratio */
+}
+
+.art-player-wrapper.portrait-9-16 {
+  padding-bottom: 177.78%; /* 9:16 aspect ratio */
+}
+
+/* Hover states for better UX */
+.video-player-container:hover .art-controls {
+  opacity: 1 !important;
+}
+
+/* Others Tabs Mobile Layout - Centered */
+@media (max-width: 768px) {
+  .others-tabs {
+    display: grid;
+    grid-template-areas: 
+      "visual character"
+      "process process";
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    justify-items: center;
+    align-items: center;
+  }
+
+  .others-tab:nth-child(1) { /* Visual Breakdown */
+    grid-area: visual;
+    width: 100%;
+    max-width: 160px;
+    justify-self: center;
+  }
+
+  .others-tab:nth-child(2) { /* Character Design */
+    grid-area: character;
+    width: 100%;
+    max-width: 160px;
+    justify-self: center;
+  }
+
+  .others-tab:nth-child(3) { /* Art Process */
+    grid-area: process;
+    width: 100%;
+    max-width: 200px;
+    justify-self: center;
+    grid-column: 1 / -1;
+  }
+
+  /* Ensure text is centered within buttons */
+  .others-tab {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Optional: Adjust for very small screens */
+@media (max-width: 480px) {
+  .others-tabs {
+    gap: 0.4rem;
+  }
+
+  .others-tab:nth-child(3) {
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 360px) {
+  .others-tab:nth-child(1),
+  .others-tab:nth-child(2) {
+    max-width: 130px;
+  }
+
+  .others-tab:nth-child(3) {
+    max-width: 160px;
+  }
 }

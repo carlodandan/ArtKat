@@ -31,8 +31,9 @@ function App() {
             <Route path="/artwork/personal" element={<Artwork />} />
             <Route path="/artwork/webtoon" element={<Artwork />} />
             <Route path="/artwork/others" element={<Artwork />} />
-            <Route path="/artwork/others/art-process" element={<Artwork />} />
+            <Route path="/artwork/others/visual-breakdown" element={<Artwork />} />
             <Route path="/artwork/others/character-design" element={<Artwork />} />
+            <Route path="/artwork/others/art-process" element={<Artwork />} />
             {/* Fallback route */}
             <Route path="*" element={<Home />} />
           </Routes>

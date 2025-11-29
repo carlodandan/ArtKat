@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "video": "/videos/art-process/elf.mp4",
+    "thumbnail": "/img/process/elf_full.webp",
+    "aspectRatio": "1:1.414"
+  },
+  {
+    "id": 2,
+    "video": "/videos/art-process/gun.mp4", 
+    "thumbnail": "/img/process/gun_full.webp",
+    "aspectRatio": "1:1.414"
+  }
+]
