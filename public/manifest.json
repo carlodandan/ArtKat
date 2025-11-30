@@ -1,5 +1,5 @@
 {
-  "name": "ArtKat | Digital Illustrator & Character Artist",
+  "name": "ArtKat | Digital Illustrator &amp; Character Artist",
   "short_name": "ArtKat",
   "description": "Professional digital illustrator specializing in character design, webtoon art assistance, and concept illustrations. Explore my portfolio of personal works and webtoon collaborations.",
   "start_url": "/",
@@ -10,7 +10,12 @@
   "scope": "/",
   "lang": "en",
   "dir": "ltr",
-  "categories": ["entertainment", "art", "portfolio", "design"],
+  "categories": [
+    "entertainment",
+    "art",
+    "portfolio",
+    "design"
+  ],
   "iarc_rating_id": "e58b56a2-8b43-4c69-9a8f-5a595a97c9b1",
   "icons": [
     {
@@ -94,6 +99,12 @@
       "sizes": "180x180",
       "type": "image/png"
     }
+    ,
+    {
+      "src": "/icons/artkat.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
   ],
   "screenshots": [
     {
@@ -101,12 +112,12 @@
       "sizes": "1583x723",
       "type": "image/webp",
       "form_factor": "wide",
-      "label": "ArtKat Portfolio Homepage - Digital Illustrator & Character Artist"
+      "label": "ArtKat Portfolio Homepage - Digital Illustrator &amp; Character Artist"
     },
     {
       "src": "https://artkat.pages.dev/landingpagemobile.webp",
       "sizes": "1080x2049",
-      "type": "image/webp", 
+      "type": "image/webp",
       "form_factor": "narrow",
       "label": "ArtKat Portfolio - Mobile View"
     }
@@ -127,7 +138,7 @@
     },
     {
       "name": "My Profile",
-      "short_name": "Profile", 
+      "short_name": "Profile",
       "description": "Learn about my background and artistic journey",
       "url": "/profile",
       "icons": [
@@ -139,7 +150,5 @@
       ]
     }
   ],
-  "related_applications": [],
-  "prefer_related_applications": false,
-  "protocol_handlers": []
+  "prefer_related_applications": false
 }
